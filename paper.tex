@@ -7,8 +7,10 @@
 
 \begin{document}
 
+
 \title{Validation of an Actuator Line Model Coupled to a Dynamic Stall Model for
 Pitching Motions Characteristic to Vertical Axis Turbines}
+
 
 \author{Victor Mendoza$^{1}$, Peter Bachant$^{2}$, Martin Wosnik$^{2}$ and Anders Goude$^{1}$ }
 \address{$^{1}$ Department of Engineering Sciences, Division of Electricity, Uppsala University, \\Uppsala 751 21, Sweden}
@@ -16,12 +18,10 @@ Pitching Motions Characteristic to Vertical Axis Turbines}
 \ead{victor.mendoza@angstrom.uu.se}
 
 
-\begin{abstract}
-
-    Vertical Axis Turbines (VAWT) have been used for extracting of energy either
+\begin{abstract}Vertical Axis Wind Turbines (VAWTs) have been used for extracting of energy either
     from sea or wind. A simpler design, low cost of maintenance and the
     capability of working independent from the direction of the flow are some of
-    the most important advantages over conventional Horizontal Axis Turbines
+    the most important advantages over conventional Horizontal Axis Wind Turbines
     (HAWTs). Complex and unsteady fluid dynamics are not easy to model for
     simulation tools. One of the most relevant phenomena is the dynamic stall
     which is inherently to unsteady conditions, this work is focused in its
@@ -32,22 +32,26 @@ Pitching Motions Characteristic to Vertical Axis Turbines}
     for solving velocity flow field and a dynamic stall model for force
     interactions.} Force coefficients obtained from the model are validated with
     experimental data of pithing airfoil in similar operating conditions as
-    H-rotor type.
+    H-rotor type. Numerical results show reasonable agreement with experimental data
+	for pitching motion. In general, simulations allow to characterize dynamic stall effects 
+	and their magnitude.
+	
 
 \end{abstract}
 
 
 \section{Introduction}
 
-Operating conditions of VAWT are characterized for complex unsteady flows which
-give a considerable challenge for both to describe using measurements and to
+Operating conditions of VAWT are characterized as complex unsteady flows which
+give a considerable challenge, both to describe using measurements and to
 represent through simulation tools\cite{huyer1996unsteady}. Moreover, VAWT
-blades are inherently exposed to cyclic variation in the angle of attack which
+blades are inherently exposed to cyclic variation in the angle of attack, which
 gives cyclic blade forces and can give material fatigue damage. Accurate
-modeling of the varying forces is therefore very important for the design of
+modeling of the varying forces is therefore very important for the design of the
 VAWT.
 
-The angle of attack in a fixed pitch VAWT is increasing with decreased tip speed
+The amplitude of the angle of attack oscillation in a fixed pitch VAWT is increasing 
+with decreased tip speed
 ration (TSR), and at low TSR (common during stall regulation), the blades will
 experience dynamic stall, where the force coefficients for the blade not only
 depend on the angle of attack, but also on the rate of change of the angle of
@@ -58,11 +62,13 @@ line model, for pitching motion typical to a VAWT.
 
 \section{Methodology}
 
-For solving the governing equations of phenomena involved, a coupled model have
+For solving the governing equations of the phenomena involved, a coupled model have
 been implemented: the actuator line model is used to calculate the flow
 velocities and thereby the angle of attack. The dynamic stall model is used to
-calculate blade force coefficients, which the actuator line model need for the
-velocity field calculations. In this work it was chosen to validate the model
+calculate blade force coefficients, which the actuator line model needs for the
+velocity field calculations. 
+
+In this work, it was chosen to validate the model
 against wind tunnel data for a pitching blade. This will put the focus on the
 force modeling part in the simulation model.
 
@@ -76,19 +82,19 @@ based on empirical data.
 
 \textbf{Dynamic Stall Modeling:} represented by the Leishman-Beddoes
 model\cite{leishman1986generalised} with the modifications of Sheng et
-al\cite{sheng2008modified}. It is capable to calculate the unsteady lift,
-pitching moment and drag, giving a physical description of the aerodynamics. It
-have been widely validated with experimental data\cite{leishman1989semi}.
-Separated on three subsystems: an attached flow model for unsteady linear
-airloads, a separated flow model for non-linear airloads and a dynamic stall
-model for the airloads induced by the leading edge vortex. In this work, the
-dynamic stall model described by Dyachuk\cite{dyachuk} has been implemented,
+al\cite{sheng2008modified} and Dyachuk\cite{dyachuk},
 using the library turbinesFoam developed by Bachant\cite{bachant2015simulating}.
+It is capable to calculate the unsteady lift,
+pitching moment and drag, giving a physical description of the aerodynamics. It
+have been validated with experimental data in\cite{leishman1989semi}.
+The model is separated into three subsystems: an attached flow model for unsteady linear
+airloads, a separated flow model for non-linear airloads and a dynamic stall
+model for the airloads induced by the leading edge vortex.  
 
-NACA0021 airfoil was tested at the Reynolds number of 1000000 (which is a
+A NACA0021 airfoil was tested at the Reynolds number of 1.000.000 (which is a
 reasonable value for operating VAWT) during pithing motion similar to the motion
-of the VAWT blade. Different amplitude degrees were tried out. In a VAWT with
-fixed blades the angle of attack is in function of the TSR of the turbine. A
+of the VAWT blade. Different amplitude degrees were investigated. In a VAWT with
+fixed blades, the angle of attack is in function of the TSR of the turbine. A
 periodic function is used to represent the variations of the angles of attack
 which a VAWT blade experiences analog to the pitching motion,
 \begin{eqnarray}
@@ -101,27 +107,6 @@ Where $\theta$ is the azimuthal blade angle and $ \lambda $ represents the TSR,
 The pitching blade experiments were carried out at Glasgow
 University\cite{angell1988collected}\\
 
-
-\section{Results and discussion}
-
-The reliability of the model results is acceptable, making a good agreement with
-experimental results considering the complexity of the flows studied. For a TSR
-of 3.34 (Figure \ref{fig1}), the maximum magnitude of the angle of attack is at
-17.4\degree which is in the stall region. Both CN and CT curves show the delay
-of the flow reattachment, which is characteristic of the dynamic stall
-phenomenon. Peaks of simulated values have close agreement with the measured
-data.
-
-For a TSR of 2.60, the maximum amplitude of the angle of attack is 22.6, which
-is related to a deeper stall region compared to a TSR of 3.34. This is shown
-because the ``loop'' of the curve is wider for the lower TSR, and moreover, the
-reattachment of the flow is further delayed.
-
-It has been demonstrated how the coupled actuator line model can be coupled to
-a modified version of the Leishman-Beddoes model, and the results could be
-validated for similar operating conditions of a VAWT.
-
-
 \begin{figure}[h]
 \begin{minipage}{18pc}
 \includegraphics[width=18pc]{Fig1.png}
@@ -129,7 +114,7 @@ validated for similar operating conditions of a VAWT.
 \begin{minipage}{18pc}
 \includegraphics[width=18pc]{Fig2.png}
 \end{minipage}
-\caption{\label{fig1}Normal (left) and tangential (right) force responses during pitching motions of NACA0021 airfoil with a maximum amplitude of 17.4 \degree (analog to a $\lambda$ = 3.34).}
+\caption{\label{fig1}Normal (left) and tangential (right) force responses during pitching motions of NACA0021 airfoil with a maximum amplitude of 17.4\degree\ (analog to a $\lambda$ = 3.34).}
 \end{figure}
 
 
@@ -140,8 +125,37 @@ validated for similar operating conditions of a VAWT.
 \begin{minipage}{18pc}
 \includegraphics[width=18pc]{Fig4.png}
 \end{minipage}
-\caption{\label{fig2}Normal (left) and tangential (right) force responses during pitching motions of NACA0021 airfoil with a maximum amplitude of 22.6 \degree (analog to a $\lambda$ = 2.60).}
+\caption{\label{fig2}Normal (left) and tangential (right) force responses during pitching motions of NACA0021 airfoil with a maximum amplitude of 22.6\degree\ (analog to a $\lambda$ = 2.60).}
 \end{figure}
+
+\newpage
+
+\section{Results and discussion}
+
+For a TSR of 3.34 (Figure \ref{fig1}), the maximum magnitude of the angle of attack is at
+17.4\degree\ which is in the stall region. Both CN and CT curves show the delay
+of the flow reattachment, which is characteristic of the dynamic stall
+phenomenon. Peaks of simulated values have close agreement with the measured
+data. 
+
+For a TSR of 2.60 (Figure \ref{fig2}), the maximum amplitude of the angle of attack is 22.6\degree, which
+is related to a deeper stall region compared to a TSR of 3.34. This is shown
+because the ``loop'' of the curve is wider for the lower TSR, and moreover, the
+reattachment of the flow is further delayed. 
+
+The coupled model was set-up for the operating conditions of a VAWT. The reliability of the results is acceptable, making a good agreement with
+experimental data from the wind tunnel test, considering the complexity of the flows studied. 
+
+
+
+
+
+%It has been demonstrated how the coupled actuator line model can be coupled to
+%a modified version of the Leishman-Beddoes model, and the results could be
+%validated for similar operating conditions of a VAWT.
+
+
+
 
 
 
