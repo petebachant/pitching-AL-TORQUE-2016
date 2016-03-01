@@ -18,24 +18,25 @@ Pitching Motions Characteristic to Vertical Axis Turbines}
 \ead{victor.mendoza@angstrom.uu.se}
 
 
-\begin{abstract}Vertical Axis Wind Turbines (VAWTs) have been used for extracting of energy either
-    from sea or wind. A simpler design, low cost of maintenance and the
+\begin{abstract}
+
+    Vertical Axis Wind Turbines (VAWTs) have been used for extracting of energy
+    either from sea or wind. A simpler design, low cost of maintenance and the
     capability of working independent from the direction of the flow are some of
-    the most important advantages over conventional Horizontal Axis Wind Turbines
-    (HAWTs). Complex and unsteady fluid dynamics are not easy to model for
-    simulation tools. One of the most relevant phenomena is the dynamic stall
-    which is inherently to unsteady conditions, this work is focused in its
-    study. Dynamic stall is usually used as a passive control for VAWT operating
-    conditions, hence the importance of a good understanding. In this study,
-    \textbf{a coupled model is implemented with the open-source CFD toolbox
-    OpenFOAM for solving the governing equations; an actuator line model is used
-    for solving velocity flow field and a dynamic stall model for force
+    the most important advantages over conventional Horizontal Axis Wind
+    Turbines (HAWTs). Complex and unsteady fluid dynamics are not easy to model
+    for simulation tools. One of the most relevant phenomena is the dynamic
+    stall which is inherently to unsteady conditions, this work is focused in
+    its study. Dynamic stall is usually used as a passive control for VAWT
+    operating conditions, hence the importance of a good understanding. In this
+    study, \textbf{a coupled model is implemented with the open-source CFD
+    toolbox OpenFOAM for solving the governing equations; an actuator line model
+    is used for solving velocity flow field and a dynamic stall model for force
     interactions.} Force coefficients obtained from the model are validated with
     experimental data of pithing airfoil in similar operating conditions as
-    H-rotor type. Numerical results show reasonable agreement with experimental data
-	for pitching motion. In general, simulations allow to characterize dynamic stall effects 
-	and their magnitude.
-	
+    H-rotor type. Numerical results show reasonable agreement with experimental
+    data for pitching motion. In general, simulations allow to characterize
+    dynamic stall effects  and their magnitude.
 
 \end{abstract}
 
@@ -50,7 +51,7 @@ gives cyclic blade forces and can give material fatigue damage. Accurate
 modeling of the varying forces is therefore very important for the design of the
 VAWT.
 
-The amplitude of the angle of attack oscillation in a fixed pitch VAWT is increasing 
+The amplitude of the angle of attack oscillation in a fixed pitch VAWT is increasing
 with decreased tip speed
 ration (TSR), and at low TSR (common during stall regulation), the blades will
 experience dynamic stall, where the force coefficients for the blade not only
@@ -66,7 +67,7 @@ For solving the governing equations of the phenomena involved, a coupled model h
 been implemented: the actuator line model is used to calculate the flow
 velocities and thereby the angle of attack. The dynamic stall model is used to
 calculate blade force coefficients, which the actuator line model needs for the
-velocity field calculations. 
+velocity field calculations.
 
 In this work, it was chosen to validate the model
 against wind tunnel data for a pitching blade. This will put the focus on the
@@ -89,7 +90,7 @@ pitching moment and drag, giving a physical description of the aerodynamics. It
 have been validated with experimental data in\cite{leishman1989semi}.
 The model is separated into three subsystems: an attached flow model for unsteady linear
 airloads, a separated flow model for non-linear airloads and a dynamic stall
-model for the airloads induced by the leading edge vortex.  
+model for the airloads induced by the leading edge vortex.
 
 A NACA0021 airfoil was tested at the Reynolds number of 1.000.000 (which is a
 reasonable value for operating VAWT) during pithing motion similar to the motion
@@ -136,15 +137,15 @@ For a TSR of 3.34 (Figure \ref{fig1}), the maximum magnitude of the angle of att
 17.4\degree\ which is in the stall region. Both CN and CT curves show the delay
 of the flow reattachment, which is characteristic of the dynamic stall
 phenomenon. Peaks of simulated values have close agreement with the measured
-data. 
+data.
 
 For a TSR of 2.60 (Figure \ref{fig2}), the maximum amplitude of the angle of attack is 22.6\degree, which
 is related to a deeper stall region compared to a TSR of 3.34. This is shown
 because the ``loop'' of the curve is wider for the lower TSR, and moreover, the
-reattachment of the flow is further delayed. 
+reattachment of the flow is further delayed.
 
 The coupled model was set-up for the operating conditions of a VAWT. The reliability of the results is acceptable, making a good agreement with
-experimental data from the wind tunnel test, considering the complexity of the flows studied. 
+experimental data from the wind tunnel test, considering the complexity of the flows studied.
 
 
 
