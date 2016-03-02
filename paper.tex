@@ -35,15 +35,14 @@ Pitching Motions Characteristic to Vertical Axis Turbines}
     interactions.} Force coefficients obtained from the model are validated with
     experimental data of pithing airfoil in similar operating conditions as
     H-rotor type. Numerical results show reasonable agreement with experimental
-    data for pitching motion. In general, simulations allow to characterize
-    dynamic stall effects  and their magnitude.
+    data for pitching motion. 
 
 \end{abstract}
 
 
 \section{Introduction}
 
-Operating conditions of VAWT are characterized as complex unsteady flows which
+Operating conditions of VAWTs are characterized as complex unsteady flows which
 give a considerable challenge, both to describe using measurements and to
 represent through simulation tools\cite{huyer1996unsteady}. Moreover, VAWT
 blades are inherently exposed to cyclic variation in the angle of attack, which
@@ -79,12 +78,12 @@ study the flow around wind turbines. It is a combination of a solver of
 Navier-Stokes equations with a so-called actuator line technique, in which
 blades of the turbine are represented by a radial distribution of body forces
 along lines. These forces are determined using a dynamic stall model commonly
-based on empirical data.
+based on empirical data. This work uses the library turbinesFoam developed by
+Bachant\cite{bachant2015simulating}.
 
-\textbf{Dynamic Stall Modeling:} represented by the Leishman-Beddoes
+\textbf{Dynamic Stall Modeling:} is represented by the Leishman-Beddoes
 model\cite{leishman1986generalised} with the modifications of Sheng et
-al\cite{sheng2008modified} and Dyachuk\cite{dyachuk},
-using the library turbinesFoam developed by Bachant\cite{bachant2015simulating}.
+al\cite{sheng2008modified} and Dyachuk\cite{dyachuk}.
 It is capable to calculate the unsteady lift,
 pitching moment and drag, giving a physical description of the aerodynamics. It
 have been validated with experimental data in\cite{leishman1989semi}.
@@ -94,19 +93,19 @@ model for the airloads induced by the leading edge vortex.
 
 A NACA0021 airfoil was tested at the Reynolds number of 1.000.000 (which is a
 reasonable value for operating VAWT) during pithing motion similar to the motion
-of the VAWT blade. Different amplitude degrees were investigated. In a VAWT with
+of the VAWT blade. Different pitching amplitudes were investigated. In a VAWT with
 fixed blades, the angle of attack is in function of the TSR of the turbine. A
 periodic function is used to represent the variations of the angles of attack
 which a VAWT blade experiences analog to the pitching motion,
 \begin{eqnarray}
-    \alpha = \arctan \left( \frac{\sin \theta}{\lambda + \cos \theta} \right)
+    \alpha = \arctan \left( \frac{\sin \theta}{\lambda + \cos \theta} \right),
 \end{eqnarray}
-Where $\theta$ is the azimuthal blade angle and $ \lambda $ represents the TSR,
+where $\theta$ is the azimuthal blade angle and $ \lambda $ represents the TSR,
 \begin{eqnarray}
-    \lambda =  \frac{\Omega R}{V}
+    \lambda =  \frac{\Omega R}{V}.
 \end{eqnarray}
 The pitching blade experiments were carried out at Glasgow
-University\cite{angell1988collected}\\
+University\cite{angell1988collected}.\\
 
 \begin{figure}[h]
 \begin{minipage}{18pc}
@@ -115,7 +114,7 @@ University\cite{angell1988collected}\\
 \begin{minipage}{18pc}
 \includegraphics[width=18pc]{Fig2.png}
 \end{minipage}
-\caption{\label{fig1}Normal (left) and tangential (right) force responses during pitching motions of NACA0021 airfoil with a maximum amplitude of 17.4\degree\ (analog to a $\lambda$ = 3.34).}
+\caption{\label{fig1}Normal (left) and tangential (right) force coefficients during pitching motions of NACA0021 airfoil with a maximum amplitude of 17.4\degree\ (analog to $\lambda = 3.34$).}
 \end{figure}
 
 
@@ -126,7 +125,7 @@ University\cite{angell1988collected}\\
 \begin{minipage}{18pc}
 \includegraphics[width=18pc]{Fig4.png}
 \end{minipage}
-\caption{\label{fig2}Normal (left) and tangential (right) force responses during pitching motions of NACA0021 airfoil with a maximum amplitude of 22.6\degree\ (analog to a $\lambda$ = 2.60).}
+\caption{\label{fig2}Normal (left) and tangential (right) force coefficients during pitching motions of NACA0021 airfoil with a maximum amplitude of 22.6\degree\ (analog to $\lambda = 2.60$).}
 \end{figure}
 
 \newpage
@@ -134,7 +133,7 @@ University\cite{angell1988collected}\\
 \section{Results and discussion}
 
 For a TSR of 3.34 (Figure \ref{fig1}), the maximum magnitude of the angle of attack is at
-17.4\degree\ which is in the stall region. Both CN and CT curves show the delay
+17.4\degree\ which is in the stall region. Both \textit{CN} and \textit{CT} curves show the delay
 of the flow reattachment, which is characteristic of the dynamic stall
 phenomenon. Peaks of simulated values have close agreement with the measured
 data.
@@ -144,21 +143,9 @@ is related to a deeper stall region compared to a TSR of 3.34. This is shown
 because the ``loop'' of the curve is wider for the lower TSR, and moreover, the
 reattachment of the flow is further delayed.
 
-The coupled model was set-up for the operating conditions of a VAWT. The reliability of the results is acceptable, making a good agreement with
-experimental data from the wind tunnel test, considering the complexity of the flows studied.
-
-
-
-
-
-%It has been demonstrated how the coupled actuator line model can be coupled to
-%a modified version of the Leishman-Beddoes model, and the results could be
-%validated for similar operating conditions of a VAWT.
-
-
-
-
-
+In general, the model show good agreement with experimental data, considering the complexity
+of the flows studied. This makes the model suitable for application in wind turbine
+simulations.
 
 
 \section*{References}
