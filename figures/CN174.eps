@@ -1,9 +1,9 @@
 %!PS-Adobe-2.0 EPSF-2.0
-%%Title: CN174.eps
+%%Title: CN174.tex
 %%Creator: gnuplot 4.6 patchlevel 4
-%%CreationDate: Thu May 26 11:49:29 2016
-%%DocumentFonts: (atend)
-%%BoundingBox: 50 50 626 482
+%%CreationDate: Sat Jun 11 12:36:01 2016
+%%DocumentFonts: 
+%%BoundingBox: 50 50 410 302
 %%EndComments
 %%BeginProlog
 /gnudict 256 dict def
@@ -13,9 +13,9 @@ gnudict begin
 % The unit line width and grayscale image gamma correction may also be changed.
 %
 /Color false def
-/Blacktext false def
+/Blacktext true def
 /Solid false def
-/Dashlength 2 def
+/Dashlength 1 def
 /Landscape false def
 /Level1 false def
 /Rounded false def
@@ -27,7 +27,7 @@ gnudict begin
 /Gamma 1.0 def
 /BackgroundColor {-1.000 -1.000 -1.000} def
 %
-/vshift -86 def
+/vshift -73 def
 /dl1 {
   10.0 Dashlength mul mul
   Rounded { currentlinewidth 0.75 mul sub dup 0 le { pop 0.01 } if } if
@@ -42,7 +42,7 @@ gnudict begin
 /vpt vpt_ def
 /doclip {
   ClipToBoundingBox {
-    newpath 50 50 moveto 626 50 lineto 626 482 lineto 50 482 lineto closepath
+    newpath 50 50 moveto 410 50 lineto 410 302 lineto 50 302 lineto closepath
     clip
   } if
 } def
@@ -420,34 +420,6 @@ Level1 {Level1PatternFill} {Level2PatternFill} ifelse
 /Symbol-Oblique /Symbol findfont [1 0 .167 1 0 0] makefont
 dup length dict begin {1 index /FID eq {pop pop} {def} ifelse} forall
 currentdict end definefont pop
-/MFshow {
-   { dup 5 get 3 ge
-     { 5 get 3 eq {gsave} {grestore} ifelse }
-     {dup dup 0 get findfont exch 1 get scalefont setfont
-     [ currentpoint ] exch dup 2 get 0 exch R dup 5 get 2 ne {dup dup 6
-     get exch 4 get {Gshow} {stringwidth pop 0 R} ifelse }if dup 5 get 0 eq
-     {dup 3 get {2 get neg 0 exch R pop} {pop aload pop M} ifelse} {dup 5
-     get 1 eq {dup 2 get exch dup 3 get exch 6 get stringwidth pop -2 div
-     dup 0 R} {dup 6 get stringwidth pop -2 div 0 R 6 get
-     show 2 index {aload pop M neg 3 -1 roll neg R pop pop} {pop pop pop
-     pop aload pop M} ifelse }ifelse }ifelse }
-     ifelse }
-   forall} def
-/Gswidth {dup type /stringtype eq {stringwidth} {pop (n) stringwidth} ifelse} def
-/MFwidth {0 exch { dup 5 get 3 ge { 5 get 3 eq { 0 } { pop } ifelse }
- {dup 3 get{dup dup 0 get findfont exch 1 get scalefont setfont
-     6 get Gswidth pop add} {pop} ifelse} ifelse} forall} def
-/MLshow { currentpoint stroke M
-  0 exch R
-  Blacktext {gsave 0 setgray MFshow grestore} {MFshow} ifelse } bind def
-/MRshow { currentpoint stroke M
-  exch dup MFwidth neg 3 -1 roll R
-  Blacktext {gsave 0 setgray MFshow grestore} {MFshow} ifelse } bind def
-/MCshow { currentpoint stroke M
-  exch dup MFwidth -2 div 3 -1 roll R
-  Blacktext {gsave 0 setgray MFshow grestore} {MFshow} ifelse } bind def
-/XYsave    { [( ) 1 2 true false 3 ()] } bind def
-/XYrestore { [( ) 1 2 true false 4 ()] } bind def
 Level1 SuppressPDFMark or 
 {} {
 /SDict 10 dict def
@@ -455,13 +427,13 @@ systemdict /pdfmark known not {
   userdict /pdfmark systemdict /cleartomark get put
 } if
 SDict begin [
-  /Title (CN174.eps)
+  /Title (CN174.tex)
   /Subject (gnuplot plot)
   /Creator (gnuplot 4.6 patchlevel 4)
   /Author (victor)
 %  /Producer (gnuplot)
 %  /Keywords ()
-  /CreationDate (Thu May 26 11:49:29 2016)
+  /CreationDate (Sat Jun 11 12:36:01 2016)
   /DOCINFO pdfmark
 end
 } ifelse
@@ -475,579 +447,433 @@ doclip
 0.050 0.050 scale
 0 setgray
 newpath
-(Helvetica) findfont 260 scalefont setfont
-BackgroundColor 0 lt 3 1 roll 0 lt exch 0 lt or or not {BackgroundColor C 1.000 0 0 11520.00 8640.00 BoxColFill} if
-gsave % colour palette begin
-/maxcolors 64 def
-/HSV2RGB {  exch dup 0.0 eq {pop exch pop dup dup} % achromatic gray
-  { /HSVs exch def /HSVv exch def 6.0 mul dup floor dup 3 1 roll sub
-     /HSVf exch def /HSVi exch cvi def /HSVp HSVv 1.0 HSVs sub mul def
-	 /HSVq HSVv 1.0 HSVs HSVf mul sub mul def 
-	 /HSVt HSVv 1.0 HSVs 1.0 HSVf sub mul sub mul def
-	 /HSVi HSVi 6 mod def 0 HSVi eq {HSVv HSVt HSVp}
-	 {1 HSVi eq {HSVq HSVv HSVp}{2 HSVi eq {HSVp HSVv HSVt}
-	 {3 HSVi eq {HSVp HSVq HSVv}{4 HSVi eq {HSVt HSVp HSVv}
-	 {HSVv HSVp HSVq} ifelse} ifelse} ifelse} ifelse} ifelse
-  } ifelse} def
-/Constrain {
-  dup 0 lt {0 exch pop}{dup 1 gt {1 exch pop} if} ifelse} def
-/YIQ2RGB {
-  3 copy -1.702 mul exch -1.105 mul add add Constrain 4 1 roll
-  3 copy -0.647 mul exch -0.272 mul add add Constrain 5 1 roll
-  0.621 mul exch -0.956 mul add add Constrain 3 1 roll } def
-/CMY2RGB {  1 exch sub exch 1 exch sub 3 2 roll 1 exch sub 3 1 roll exch } def
-/XYZ2RGB {  3 copy -0.9017 mul exch -0.1187 mul add exch 0.0585 mul exch add
-  Constrain 4 1 roll 3 copy -0.0279 mul exch 1.999 mul add exch
-  -0.9844 mul add Constrain 5 1 roll -0.2891 mul exch -0.5338 mul add
-  exch 1.91 mul exch add Constrain 3 1 roll} def
-/SelectSpace {ColorSpace (HSV) eq {HSV2RGB}{ColorSpace (XYZ) eq {
-  XYZ2RGB}{ColorSpace (CMY) eq {CMY2RGB}{ColorSpace (YIQ) eq {YIQ2RGB}
-  if} ifelse} ifelse} ifelse} def
-/InterpolatedColor true def
-/grayindex {/gidx 0 def
-  {GrayA gidx get grayv ge {exit} if /gidx gidx 1 add def} loop} def
-/dgdx {grayv GrayA gidx get sub GrayA gidx 1 sub get
-  GrayA gidx get sub div} def 
-/redvalue {RedA gidx get RedA gidx 1 sub get
-  RedA gidx get sub dgdxval mul add} def
-/greenvalue {GreenA gidx get GreenA gidx 1 sub get
-  GreenA gidx get sub dgdxval mul add} def
-/bluevalue {BlueA gidx get BlueA gidx 1 sub get
-  BlueA gidx get sub dgdxval mul add} def
-/interpolate {
-  grayindex grayv GrayA gidx get sub abs 1e-5 le
-    {RedA gidx get GreenA gidx get BlueA gidx get}
-    {/dgdxval dgdx def redvalue greenvalue bluevalue} ifelse} def
-/GrayA [0 .0159 .0317 .0476 .0635 .0794 .0952 .1111 .127 .1429 .1587 .1746 
-  .1905 .2063 .2222 .2381 .254 .2698 .2857 .3016 .3175 .3333 .3492 .3651 
-  .381 .3968 .4127 .4286 .4444 .4603 .4762 .4921 .5079 .5238 .5397 .5556 
-  .5714 .5873 .6032 .619 .6349 .6508 .6667 .6825 .6984 .7143 .7302 .746 
-  .7619 .7778 .7937 .8095 .8254 .8413 .8571 .873 .8889 .9048 .9206 .9365 
-  .9524 .9683 .9841 1 ] def
-/RedA [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .0238 .0873 .1508 
-  .2143 .2778 .3413 .4048 .4683 .5317 .5952 .6587 .7222 .7857 .8492 .9127 
-  .9762 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 .9444 .881 .8175 .754 .6905 .627 
-  .5635 .5 ] def
-/GreenA [0 0 0 0 0 0 0 0 .0079 .0714 .1349 .1984 .2619 .3254 .3889 .4524 
-  .5159 .5794 .6429 .7063 .7698 .8333 .8968 .9603 1 1 1 1 1 1 1 1 1 1 1 1 1 
-  1 1 1 .9603 .8968 .8333 .7698 .7063 .6429 .5794 .5159 .4524 .3889 .3254 
-  .2619 .1984 .1349 .0714 .0079 0 0 0 0 0 0 0 0 ] def
-/BlueA [.5 .5635 .627 .6905 .754 .8175 .881 .9444 1 1 1 1 1 1 1 1 1 1 1 1 1 
-  1 1 1 .9762 .9127 .8492 .7857 .7222 .6587 .5952 .5317 .4683 .4048 .3413 
-  .2778 .2143 .1508 .0873 .0238 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-  0 0 ] def
-/pm3dround {maxcolors 0 gt {dup 1 ge
-	{pop 1} {maxcolors mul floor maxcolors 1 sub div} ifelse} if} def
-/pm3dGamma 1.0 1.5 Gamma mul div def
-/ColorSpace (RGB) def
-Color InterpolatedColor or { % COLOUR vs. GRAY map
-  InterpolatedColor { %% Interpolation vs. RGB-Formula
-    /g {stroke pm3dround /grayv exch def interpolate
-        SelectSpace setrgbcolor} bind def
-  }{
-  /g {stroke pm3dround dup cF7 Constrain exch dup cF5 Constrain exch cF15 Constrain 
-       SelectSpace setrgbcolor} bind def
-  } ifelse
-}{
-  /g {stroke pm3dround pm3dGamma exp setgray} bind def
-} ifelse
-1.000 UL
-LTb
-1.00 1.00 1.00 C 1.000 1522 950 8901 7040 BoxColFill
 1.000 UL
 LTb
 1.000 UL
 LTa
-1522 950 M
-8902 0 V
+1078 704 M
+5725 0 V
 stroke
 LTb
-1522 950 M
-88 0 V
+1078 704 M
+63 0 V
+5662 0 R
+-63 0 V
 stroke
-0.00 0.00 0.00 C 1366 950 M
-[ [(Courier) 200.0 0.0 true true 0 (-1.5)]
-] -66.7 MRshow
-1.000 UL
-LTb
-1.000 UL
 LTa
-1522 2124 M
-8902 0 V
+1078 1383 M
+5725 0 V
 stroke
 LTb
-1522 2124 M
-88 0 V
+1078 1383 M
+63 0 V
+5662 0 R
+-63 0 V
 stroke
-0.00 0.00 0.00 C 1366 2124 M
-[ [(Courier) 200.0 0.0 true true 0 (-1)]
-] -66.7 MRshow
-1.000 UL
-LTb
-1.000 UL
 LTa
-1522 3297 M
-8902 0 V
+1078 2061 M
+5725 0 V
 stroke
 LTb
-1522 3297 M
-88 0 V
+1078 2061 M
+63 0 V
+5662 0 R
+-63 0 V
 stroke
-0.00 0.00 0.00 C 1366 3297 M
-[ [(Courier) 200.0 0.0 true true 0 (-0.5)]
-] -66.7 MRshow
-1.000 UL
-LTb
-1.000 UL
 LTa
-1522 4471 M
-8902 0 V
+1078 2740 M
+5725 0 V
 stroke
 LTb
-1522 4471 M
-88 0 V
+1078 2740 M
+63 0 V
+5662 0 R
+-63 0 V
 stroke
-0.00 0.00 0.00 C 1366 4471 M
-[ [(Courier) 200.0 0.0 true true 0 (0)]
-] -66.7 MRshow
-1.000 UL
-LTb
-1.000 UL
 LTa
-1522 5644 M
-8902 0 V
+1078 3418 M
+5725 0 V
 stroke
 LTb
-1522 5644 M
-88 0 V
+1078 3418 M
+63 0 V
+5662 0 R
+-63 0 V
 stroke
-0.00 0.00 0.00 C 1366 5644 M
-[ [(Courier) 200.0 0.0 true true 0 (0.5)]
-] -66.7 MRshow
-1.000 UL
-LTb
-1.000 UL
 LTa
-1522 6818 M
-8902 0 V
+1078 4097 M
+5725 0 V
 stroke
 LTb
-1522 6818 M
-88 0 V
+1078 4097 M
+63 0 V
+5662 0 R
+-63 0 V
 stroke
-0.00 0.00 0.00 C 1366 6818 M
-[ [(Courier) 200.0 0.0 true true 0 (1)]
-] -66.7 MRshow
-1.000 UL
-LTb
-1.000 UL
 LTa
-1522 7991 M
-8902 0 V
+1078 4775 M
+5725 0 V
 stroke
 LTb
-1522 7991 M
-88 0 V
+1078 4775 M
+63 0 V
+5662 0 R
+-63 0 V
 stroke
-0.00 0.00 0.00 C 1366 7991 M
-[ [(Courier) 200.0 0.0 true true 0 (1.5)]
-] -66.7 MRshow
-1.000 UL
-LTb
-1.000 UL
 LTa
-1522 950 M
-0 7041 V
+1078 704 M
+0 4071 V
 stroke
 LTb
-1522 950 M
-0 88 V
+1078 704 M
+0 63 V
+0 4008 R
+0 -63 V
 stroke
-0.00 0.00 0.00 C 1522 690 M
-[ [(Courier) 200.0 0.0 true true 0 (-20)]
-] -66.7 MCshow
-1.000 UL
-LTb
-1.000 UL
 LTa
-2635 950 M
-0 6388 V
-0 590 R
+1794 704 M
+0 3568 V
+0 440 R
 0 63 V
 stroke
 LTb
-2635 950 M
-0 88 V
+1794 704 M
+0 63 V
+0 4008 R
+0 -63 V
 stroke
-0.00 0.00 0.00 C 2635 690 M
-[ [(Courier) 200.0 0.0 true true 0 (-15)]
-] -66.7 MCshow
-1.000 UL
-LTb
-1.000 UL
 LTa
-3748 950 M
-0 6388 V
-0 590 R
+2509 704 M
+0 3568 V
+0 440 R
 0 63 V
 stroke
 LTb
-3748 950 M
-0 88 V
+2509 704 M
+0 63 V
+0 4008 R
+0 -63 V
 stroke
-0.00 0.00 0.00 C 3748 690 M
-[ [(Courier) 200.0 0.0 true true 0 (-10)]
-] -66.7 MCshow
-1.000 UL
-LTb
-1.000 UL
 LTa
-4860 950 M
-0 6388 V
-0 590 R
+3225 704 M
+0 3568 V
+0 440 R
 0 63 V
 stroke
 LTb
-4860 950 M
-0 88 V
+3225 704 M
+0 63 V
+0 4008 R
+0 -63 V
 stroke
-0.00 0.00 0.00 C 4860 690 M
-[ [(Courier) 200.0 0.0 true true 0 (-5)]
-] -66.7 MCshow
-1.000 UL
-LTb
-1.000 UL
 LTa
-5973 950 M
-0 7041 V
+3941 704 M
+0 4071 V
 stroke
 LTb
-5973 950 M
-0 88 V
+3941 704 M
+0 63 V
+0 4008 R
+0 -63 V
 stroke
-0.00 0.00 0.00 C 5973 690 M
-[ [(Courier) 200.0 0.0 true true 0 (0)]
-] -66.7 MCshow
-1.000 UL
-LTb
-1.000 UL
 LTa
-7086 950 M
-0 7041 V
+4656 704 M
+0 4071 V
 stroke
 LTb
-7086 950 M
-0 88 V
+4656 704 M
+0 63 V
+0 4008 R
+0 -63 V
 stroke
-0.00 0.00 0.00 C 7086 690 M
-[ [(Courier) 200.0 0.0 true true 0 (5)]
-] -66.7 MCshow
-1.000 UL
-LTb
-1.000 UL
 LTa
-8199 950 M
-0 7041 V
+5372 704 M
+0 4071 V
 stroke
 LTb
-8199 950 M
-0 88 V
+5372 704 M
+0 63 V
+0 4008 R
+0 -63 V
 stroke
-0.00 0.00 0.00 C 8199 690 M
-[ [(Courier) 200.0 0.0 true true 0 (10)]
-] -66.7 MCshow
-1.000 UL
-LTb
-1.000 UL
 LTa
-9311 950 M
-0 7041 V
+6087 704 M
+0 4071 V
 stroke
 LTb
-9311 950 M
-0 88 V
+6087 704 M
+0 63 V
+0 4008 R
+0 -63 V
 stroke
-0.00 0.00 0.00 C 9311 690 M
-[ [(Courier) 200.0 0.0 true true 0 (15)]
-] -66.7 MCshow
-1.000 UL
-LTb
-1.000 UL
 LTa
-10424 950 M
-0 7041 V
+6803 704 M
+0 4071 V
 stroke
 LTb
-10424 950 M
-0 88 V
+6803 704 M
+0 63 V
+0 4008 R
+0 -63 V
 stroke
-0.00 0.00 0.00 C 10424 690 M
-[ [(Courier) 200.0 0.0 true true 0 (20)]
-] -66.7 MCshow
-1.000 UL
-LTb
-1.000 UL
-LTb
-1522 7991 M
-0 -7041 V
-8902 0 V
-0 7041 R
--8902 0 R
-stroke
-0.00 0.00 0.00 C 456 4470 M
-currentpoint gsave translate 90 rotate 0 0 moveto
-[ [(Courier) 300.0 0.0 true true 0 (C)]
-[(Courier) 240.0 -90.0 true true 0 (N)]
-] -70.0 MCshow
-grestore
-LTb
-0.00 0.00 0.00 C 5973 300 M
-[ [(Courier) 300.0 0.0 true true 0 (Angle of attack )]
-[(Symbol) 300.0 0.0 true true 0 (a)]
-[(Courier) 300.0 0.0 true true 0 ( [)]
-[(Symbol) 300.0 0.0 true true 0 (\260)]
-[(Courier) 300.0 0.0 true true 0 (])]
-] -100.0 MCshow
-LTb
-1.000 UP
-1.000 UL
-LTb
-1.000 UL
-LTb
-1678 7338 N
-0 590 V
-3339 0 V
-0 -590 V
--3339 0 V
+1078 4775 N
+0 -4071 V
+5725 0 V
+0 4071 V
+-5725 0 V
 Z stroke
-% Begin plot #1
-1.667 UP
-2.000 UL
-LT0
-0.00 0.00 1.00 C 0.00 0.00 0.00 C 4018 7781 M
-[ [(Courier) 300.0 0.0 true true 0 (   experimental)]
-] -100.0 MRshow
-LT0
-0.00 0.00 1.00 C 4174 7781 M
-687 0 V
-2092 1771 M
-0 111 V
-21 112 V
-65 251 V
-150 279 V
-183 84 V
-172 97 V
-151 84 V
-301 70 V
-215 97 V
-182 28 V
-183 84 V
-162 84 V
-247 69 V
-193 70 V
-280 98 V
-451 251 V
-194 125 V
-150 154 V
-162 167 V
-150 98 V
-269 223 V
-151 83 V
-258 210 V
-247 195 V
-301 265 V
-183 279 V
-204 251 V
-290 223 V
-140 167 V
-193 126 V
-226 223 V
-312 404 V
-140 154 V
-387 321 V
-183 167 V
-301 139 V
-172 -27 V
-139 -196 V
-9564 7057 L
-9413 6917 L
-9252 6736 L
-9069 6568 L
-8897 6290 L
-8607 6122 L
--140 -28 V
--172 -83 V
-8048 5871 L
-7833 5732 L
-7564 5481 L
-7349 5369 L
-7091 5257 L
-6683 5076 L
--65 -209 V
--183 -84 V
--172 -83 V
-5908 4379 L
-5683 4114 L
-5048 3612 L
-4715 3403 L
-4543 3263 L
-4403 3096 L
-4092 2914 L
-3920 2761 L
-3704 2524 L
--118 -84 V
-3350 2301 L
-3038 2120 L
-2780 1924 L
--204 -69 V
--140 -56 V
--54 -56 V
--150 -56 V
--54 -14 V
-2092 1771 Circle
-2092 1882 Circle
-2113 1994 Circle
-2178 2245 Circle
-2328 2524 Circle
-2511 2608 Circle
-2683 2705 Circle
-2834 2789 Circle
-3135 2859 Circle
-3350 2956 Circle
-3532 2984 Circle
-3715 3068 Circle
-3877 3152 Circle
-4124 3221 Circle
-4317 3291 Circle
-4597 3389 Circle
-5048 3640 Circle
-5242 3765 Circle
-5392 3919 Circle
-5554 4086 Circle
-5704 4184 Circle
-5973 4407 Circle
-6124 4490 Circle
-6382 4700 Circle
-6629 4895 Circle
-6930 5160 Circle
-7113 5439 Circle
-7317 5690 Circle
-7607 5913 Circle
-7747 6080 Circle
-7940 6206 Circle
-8166 6429 Circle
-8478 6833 Circle
-8618 6987 Circle
-9005 7308 Circle
-9188 7475 Circle
-9489 7614 Circle
-9661 7587 Circle
-9800 7391 Circle
-9564 7057 Circle
-9413 6917 Circle
-9252 6736 Circle
-9069 6568 Circle
-8897 6290 Circle
-8607 6122 Circle
-8467 6094 Circle
-8295 6011 Circle
-8048 5871 Circle
-7833 5732 Circle
-7564 5481 Circle
-7349 5369 Circle
-7091 5257 Circle
-6683 5076 Circle
-6618 4867 Circle
-6435 4783 Circle
-6263 4700 Circle
-5908 4379 Circle
-5683 4114 Circle
-5048 3612 Circle
-4715 3403 Circle
-4543 3263 Circle
-4403 3096 Circle
-4092 2914 Circle
-3920 2761 Circle
-3704 2524 Circle
-3586 2440 Circle
-3350 2301 Circle
-3038 2120 Circle
-2780 1924 Circle
-2576 1855 Circle
-2436 1799 Circle
-2382 1743 Circle
-2232 1687 Circle
-2178 1673 Circle
-4517 7781 Circle
-% End plot #1
-% Begin plot #2
-2.000 UL
-LT0
-1.00 0.00 0.00 C 0.00 0.00 0.00 C 4018 7486 M
-[ [(Courier) 300.0 0.0 true true 0 (   simulated)]
-] -100.0 MRshow
-LT0
-1.00 0.00 0.00 C 4174 7486 M
-687 0 V
-5730 4327 M
-702 568 V
-682 576 V
-634 555 V
-565 493 V
-479 406 V
-389 309 V
-295 211 V
-205 119 V
-122 38 V
-46 -43 V
--22 -104 V
--82 -137 V
-9611 7162 L
-9431 6996 L
-9212 6825 L
-8959 6648 L
-8677 6466 L
-8371 6274 L
-8045 6065 L
-7703 5829 L
-7347 5570 L
-6982 5290 L
-6609 4994 L
-6231 4683 L
-5852 4361 L
-5474 4032 L
-5099 3698 L
-4730 3366 L
-4371 3045 L
-4023 2742 L
-3691 2459 L
-3377 2203 L
-3087 1976 L
-2823 1783 L
-2591 1628 L
-2396 1515 L
--152 -63 V
--102 -4 V
--45 47 V
-21 90 V
-93 132 V
-175 170 V
-262 211 V
-354 255 V
-447 305 V
-535 361 V
-611 437 V
-668 504 V
-698 551 V
-% End plot #2
 1.000 UP
-stroke
 1.000 UL
 LTb
-grestore % colour palette end
+1.000 UL
+LTb
+1210 4272 N
+0 440 V
+2439 0 V
+0 -440 V
+-2439 0 V
+Z stroke
+1.000 UP
+1.000 UL
+LT0
+0.00 0.00 1.00 C 1444 1179 M
+0 64 V
+14 65 V
+42 145 V
+97 161 V
+117 48 V
+111 57 V
+97 48 V
+193 41 V
+138 56 V
+118 16 V
+118 49 V
+103 48 V
+159 40 V
+125 41 V
+179 56 V
+291 145 V
+124 73 V
+97 88 V
+104 97 V
+97 57 V
+173 129 V
+96 48 V
+166 121 V
+159 113 V
+194 153 V
+117 161 V
+132 145 V
+186 130 V
+90 96 V
+125 73 V
+145 129 V
+201 234 V
+89 88 V
+249 186 V
+118 97 V
+193 80 V
+111 -16 V
+90 -113 V
+6250 4235 L
+-97 -81 V
+6049 4049 L
+-117 -96 V
+5821 3791 L
+-187 -97 V
+-89 -16 V
+-111 -48 V
+-159 -81 V
+-138 -80 V
+4964 3324 L
+-138 -65 V
+-166 -64 V
+4397 3090 L
+-42 -121 V
+-117 -49 V
+-111 -48 V
+3899 2687 L
+3754 2533 L
+3346 2243 L
+3132 2122 L
+-111 -81 V
+-90 -96 V
+2731 1840 L
+-111 -89 V
+2482 1614 L
+-76 -48 V
+-153 -81 V
+2053 1380 L
+1887 1267 L
+-131 -40 V
+-90 -32 V
+-35 -33 V
+-97 -32 V
+-34 -8 V
+1444 1179 Pls
+1444 1243 Pls
+1458 1308 Pls
+1500 1453 Pls
+1597 1614 Pls
+1714 1662 Pls
+1825 1719 Pls
+1922 1767 Pls
+2115 1808 Pls
+2253 1864 Pls
+2371 1880 Pls
+2489 1929 Pls
+2592 1977 Pls
+2751 2017 Pls
+2876 2058 Pls
+3055 2114 Pls
+3346 2259 Pls
+3470 2332 Pls
+3567 2420 Pls
+3671 2517 Pls
+3768 2574 Pls
+3941 2703 Pls
+4037 2751 Pls
+4203 2872 Pls
+4362 2985 Pls
+4556 3138 Pls
+4673 3299 Pls
+4805 3444 Pls
+4991 3574 Pls
+5081 3670 Pls
+5206 3743 Pls
+5351 3872 Pls
+5552 4106 Pls
+5641 4194 Pls
+5890 4380 Pls
+6008 4477 Pls
+6201 4557 Pls
+6312 4541 Pls
+6402 4428 Pls
+6250 4235 Pls
+6153 4154 Pls
+6049 4049 Pls
+5932 3953 Pls
+5821 3791 Pls
+5634 3694 Pls
+5545 3678 Pls
+5434 3630 Pls
+5275 3549 Pls
+5137 3469 Pls
+4964 3324 Pls
+4826 3259 Pls
+4660 3195 Pls
+4397 3090 Pls
+4355 2969 Pls
+4238 2920 Pls
+4127 2872 Pls
+3899 2687 Pls
+3754 2533 Pls
+3346 2243 Pls
+3132 2122 Pls
+3021 2041 Pls
+2931 1945 Pls
+2731 1840 Pls
+2620 1751 Pls
+2482 1614 Pls
+2406 1566 Pls
+2253 1485 Pls
+2053 1380 Pls
+1887 1267 Pls
+1756 1227 Pls
+1666 1195 Pls
+1631 1162 Pls
+1534 1130 Pls
+1500 1122 Pls
+1.000 UL
+LT0
+1.00 0.00 0.00 C 3785 2656 M
+451 329 V
+438 333 V
+408 321 V
+363 285 V
+309 235 V
+249 178 V
+190 122 V
+132 69 V
+79 22 V
+29 -25 V
+-14 -60 V
+-52 -79 V
+-87 -90 V
+-116 -96 V
+-141 -99 V
+5861 3999 L
+5679 3893 L
+5483 3782 L
+5273 3661 L
+5053 3525 L
+4824 3375 L
+4589 3214 L
+4349 3042 L
+4107 2862 L
+3863 2676 L
+3620 2486 L
+3378 2293 L
+3141 2101 L
+2910 1915 L
+2687 1740 L
+2473 1576 L
+2271 1428 L
+2084 1297 L
+1914 1186 L
+-149 -90 V
+-125 -65 V
+-98 -37 V
+-65 -2 V
+-29 27 V
+13 52 V
+60 76 V
+112 99 V
+169 122 V
+228 147 V
+287 177 V
+344 208 V
+393 253 V
+430 291 V
+448 319 V
+stroke
+LTw
+1.000 1210 4272 2439 440 BoxColFill
+1.000 UL
+LTb
+1210 4272 N
+0 440 V
+2439 0 V
+0 -440 V
+-2439 0 V
+Z stroke
+1.000 UP
+1.000 UL
+LT0
+0.00 0.00 1.00 C LTb
+LT0
+0.00 0.00 1.00 C 2926 4602 M
+591 0 V
+3221 4602 Pls
+1.000 UL
+LT0
+1.00 0.00 0.00 C LTb
+LT0
+1.00 0.00 0.00 C 2926 4382 M
+591 0 V
+stroke
+LTb
+1078 4775 N
+0 -4071 V
+5725 0 V
+0 4071 V
+-5725 0 V
+Z stroke
+1.000 UP
+1.000 UL
+LTb
 stroke
 grestore
 end
 showpage
 %%Trailer
-%%DocumentFonts: Symbol Courier Helvetica

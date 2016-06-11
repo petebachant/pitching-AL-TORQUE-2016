@@ -228,11 +228,11 @@ In this section, obtained results for $C_N$ and $C_T$ from simulations are compa
 
 \begin{figure}[h]
 \begin{minipage}{18pc}
-\includegraphics[width=\columnwidth]{CN226revolutions.eps}
+\resizebox{\columnwidth}{!}{\input{./figures/CN226revolutions}}
 %\resizebox{\columnwidth}{!}{\input{plot}}
 \end{minipage}\hspace{2pc}%
 \begin{minipage}{18pc}
-\includegraphics[width=\columnwidth]{CT226revolutions.eps}
+\resizebox{\columnwidth}{!}{\input{./figures/CT226revolutions}}
 \end{minipage} 
 \caption{\label{revolutions}Normal (left) and tangential (right) force coefficients varying the number of revolutions for a pitching motion of NACA0021 airfoil with a maximum amplitude of 22.6$\degree$.}
 \end{figure}
@@ -253,11 +253,11 @@ From Figure \ref{figmesh}, it could be noticed that there is a  variation in the
 
 \begin{figure}[h]
 \begin{minipage}{18pc}
-\includegraphics[width=\columnwidth]{CNmesh.eps}
+\resizebox{\columnwidth}{!}{\input{./figures/CNmesh}}
 %\resizebox{\columnwidth}{!}{\input{plot}}
 \end{minipage}\hspace{2pc}%
 \begin{minipage}{18pc}
-\includegraphics[width=\columnwidth]{CTmesh.eps}
+\resizebox{\columnwidth}{!}{\input{./figures/CTmesh}}
 \end{minipage} 
 \caption{\label{figmesh}Normal (left) and tangential (right) force coefficients varying the size of the reference mesh for a pitching motion with a maximum amplitude of 22.6\degree\ }
 \end{figure}
@@ -268,11 +268,11 @@ The model is more sensitive to the spatial discretization than the temporal one;
 
 \begin{figure}[h]
 \begin{minipage}{18pc}
-\includegraphics[width=\columnwidth]{CN226dtLEScoarse.eps}
+\resizebox{\columnwidth}{!}{\input{./figures/CN226dtLEScoarse}}
 %\resizebox{\columnwidth}{!}{\input{plot}}
 \end{minipage}\hspace{2pc}%
 \begin{minipage}{18pc}
-\includegraphics[width=\columnwidth]{CT226dtLEScoarse.eps}
+\resizebox{\columnwidth}{!}{\input{./figures/CT226dtLEScoarse}}
 \end{minipage} 
 \caption{\label{figdtcoarse}Normal (left) and tangential (right) force coefficients varying time-step discretization for a pithing motion with a maximum amplitude of 22.6\degree\ }
 \end{figure}
@@ -294,11 +294,11 @@ reattachment of the flow is further delayed. Simulated peak for $C_T$ is overest
 
 \begin{figure}[h]
 \begin{minipage}{18pc}
-\includegraphics[width=\columnwidth]{CN138.eps}
+\resizebox{\columnwidth}{!}{\input{./figures/CN138}}
 %\resizebox{\columnwidth}{!}{\input{plot}}
 \end{minipage}\hspace{2pc}%
 \begin{minipage}{18pc}
-\includegraphics[width=\columnwidth]{CT138.eps}
+\resizebox{\columnwidth}{!}{\input{./figures/CT138}}
 \end{minipage} 
 \caption{\label{fig138}Normal (left) and tangential (right) force coefficients during pitching motions of NACA0021 airfoil with a maximum amplitude of 13.8\degree\ (analog to $\lambda = 4.19$).}
 \end{figure}
@@ -306,22 +306,22 @@ reattachment of the flow is further delayed. Simulated peak for $C_T$ is overest
 
 \begin{figure}[h]
 \begin{minipage}{18pc}
-\includegraphics[width=\columnwidth]{CN174.eps}
+\resizebox{\columnwidth}{!}{\input{./figures/CN174}}
 %\resizebox{\columnwidth}{!}{\input{plot}}
 \end{minipage}\hspace{2pc}%
 \begin{minipage}{18pc}
-\includegraphics[width=\columnwidth]{CT174.eps}
+\resizebox{\columnwidth}{!}{\input{./figures/CT174}}
 \end{minipage} 
 \caption{\label{fig174}Normal (left) and tangential (right) force coefficients during pitching motions of NACA0021 airfoil with a maximum amplitude of 17.4\degree\ (analog to $\lambda = 3.34$).}
 \end{figure}
 
 \begin{figure}[h]
 \begin{minipage}{18pc}
-\includegraphics[width=\columnwidth]{CN226.eps}
+\resizebox{\columnwidth}{!}{\input{./figures/CN226}}
 %\resizebox{\columnwidth}{!}{\input{plot}}
 \end{minipage}\hspace{2pc}%
 \begin{minipage}{18pc}
-\includegraphics[width=\columnwidth]{CT226.eps}
+\resizebox{\columnwidth}{!}{\input{./figures/CT226}}
 \end{minipage} 
 \caption{\label{fig226}Normal (left) and tangential (right) force coefficients during pitching motions of NACA0021 airfoil with a maximum amplitude of 22.6\degree\ (analog to $\lambda = 2.60$).}
 \end{figure}
@@ -331,14 +331,30 @@ A simulation with a RANS $k$-$\epsilon$ standard turbulence model was carried ou
 
 \begin{figure}[h]
 \begin{minipage}{18pc}
-\includegraphics[width=\columnwidth]{CNRANSLES.eps}
+\resizebox{\columnwidth}{!}{\input{./figures/CNRANSLES}}
 %\resizebox{\columnwidth}{!}{\input{plot}}
 \end{minipage}\hspace{2pc}%
 \begin{minipage}{18pc}
-\includegraphics[width=\columnwidth]{CTRANSLES.eps}
+\resizebox{\columnwidth}{!}{\input{./figures/CTRANSLES}}
 \end{minipage} 
-\caption{\label{RANSLES}Normal (left) and tangential (right) force coefficients varying the size of the reference mesh, pithing motion with a maximum amplitude of 22.6\degree\ }
+\caption{\label{RANSLES}Normal (left) and tangential (right) force coefficients for different turbulence models, pithing motion with a maximum amplitude of 22.6\degree\ }
 \end{figure}
+
+\subsection{Unsteady effects correction}
+A test for the simulation with the DSM turned off was carried out, it means there is no compensation for the unsteady effects: the effective angle of attack is the angle of attack provided by the ALM. Figure \ref{AMP174corrections} depicts that simulated results are closer to experimental data with the corrections. Both $C_N$ and $C_T$ peak values are not overestimated. The $C_N$ loop, shows that the model without the corrections was not able to capture reattachment flow effects. 
+
+\begin{figure}[h]
+\begin{minipage}{18pc}
+\resizebox{\columnwidth}{!}{\input{./figures/CNAMP174corrections}}
+%\resizebox{\columnwidth}{!}{\input{plot}}
+\end{minipage}\hspace{2pc}%
+\begin{minipage}{18pc}
+\resizebox{\columnwidth}{!}{\input{./figures/CTAMP174corrections}}
+\end{minipage} 
+\caption{\label{AMP174corrections}Normal (left) and tangential (right) force coefficients with and without unsteady effects correction, pithing motion with a maximum amplitude of 17.4\degree\ }
+\end{figure}
+
+
 
 \section{Conclusions}
 It have been demonstrated that the presented coupled model ALM with DSM, shows good agreement with experimental data, considering the complexity
