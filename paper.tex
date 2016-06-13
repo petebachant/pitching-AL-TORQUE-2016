@@ -32,7 +32,7 @@ Pitching Motions Characteristic to Vertical Axis Turbines}
     of the present study. Dynamic stall is usually used as a passive control for
     VAT operating conditions, hence the importance of predicting its effects. In
     this study, a coupled model is implemented with the open-source CFD
-    toolbox OpenFOAM for solving the Navier-Stokes equations, where an actuator
+    toolbox OpenFOAM for solving the Navier--Stokes equations, where an actuator
     line model and dynamic stall model are used to compute the blade loading and
     body force. Force coefficients obtained from the model are validated with
     experimental data of pitching airfoil in similar operating conditions as an
@@ -50,42 +50,58 @@ cyclic variation in the angle of attack, which gives cyclic blade forces and can
 give material fatigue damage. Accurate modeling of the varying forces is
 therefore very important for the design of the VAWT.
 
-The amplitude of the angle of attack oscillation in a fixed pitch VAWT is increasing
-with decreased tip speed
-ration (TSR), and at low TSR (common during stall regulation), the blades will
-experience dynamic stall, where the force coefficients for the blade not only
-depend on the angle of attack, but also on the rate of change of the angle of
-attack. The aim of this study is to investigate the performance of a
-Leishman-Beddoes type dynamic stall model when implemented within an actuator
-line model, for pitching motion typical to a VAWT.
+The amplitude of the angle of attack oscillation in a fixed pitch VAWT is
+increasing with decreased tip speed ration (TSR), and at low TSR (common during
+stall regulation), the blades will experience dynamic stall, where the force
+coefficients for the blade not only depend on the angle of attack, but also on
+the rate of change of the angle of attack. The aim of this study is to
+investigate the performance of a Leishman-Beddoes type dynamic stall model when
+implemented within an actuator line model, for pitching motion typical to a
+VAWT.
+
 
 \section{Methodology}
-For solving the governing equations of the phenomena involved, a coupled model have
-been implemented: the actuator line model is used to calculate the flow
-velocities and thereby the angle of attack. The dynamic stall model is used to
-calculate blade force coefficients, which the actuator line model needs for the
-velocity field calculations.
 
-In this work, it was chosen to validate the model
-against wind tunnel data for a pitching blade. This will put the focus on the
-force modeling part in the simulation model.
+For solving the governing equations of the phenomena involved, a coupled model
+has been implemented: the actuator line model (ALM) samples the flow velocity
+from the Navier--Stokes solver, and thereby computes each blade element's angle
+of attack and relative velocity. The dynamic stall model is used to calculate
+blade force coefficients, which the actuator line model uses to impart the body
+force back into the flow solver.
+
+In this work, it was chosen to validate the model against wind tunnel data for a
+pitching blade. This will put the focus on the force modeling part in the
+simulation model.
 
 \subsection{Actuator Line Model (ALM)}
-The ALM is a three-dimensional and unsteady aerodynamic
-model developed by S{\o}rensen and Shen\cite{sorensen1999computation}, used to
-study the flow around wind turbines. It is a combination of a solver of
-Navier-Stokes equations with a so-called actuator line technique, in which
-blades of the turbine are represented by a radial distribution of body forces
-along lines. These forces are determined using a dynamic stall model commonly
-based on empirical data. This work uses the library turbinesFoam developed by
-Bachant\cite{bachant2015simulating}. This model is based on incompressible Navier-Stokes equation
+
+The ALM is a three-dimensional and unsteady aerodynamic model developed by
+S{\o}rensen and Shen\cite{sorensen1999computation}, used to study the flow
+around wind turbines. It is a combination of a solver of the Navier--Stokes equations
+with a so-called actuator line technique, in which blades of the turbine are
+represented by a distribution of body forces along lines. These forces
+are determined using a dynamic stall model commonly based on empirical data.
+This work uses the library turbinesFoam developed by Bachant et
+al.~\cite{bachant2015simulating,Bachant2016-VAT-ALM}.
+
+The model employed here is based on the incompressible Navier--Stokes equation
 \begin{align}
  & \nonumber \\ & \dfrac{\partial \vec{V}}{\partial t} + \vec{V} \cdot \nabla \vec{V} = - \dfrac{1}{ \rho} \nabla p + \nu \nabla ^2 \vec{V} + \vec{f}	  \label{eqmom}
 \end{align} %\begin{align}
 with $\vec{f}$ representing the body forces, which are the loads on the rotating blades for this case.
 
-Static lift and drag coefficients of the 2D profile used for this study are already known from the technical technical report made by Sheldahl and Klimas \cite{sheldahl1981aerodynamic}, which is a popular database set containing values for a wide range of Reynolds numbers. These coefficients are tabulated and combined with the blade element approach for determining
-body forces acting on blades. Relative flow velocity $\vec{V}_{rel} $ and angle of attack $\alpha$ are calculated for each blade using the geometric relation between the velocity of the blade $- \Omega r$, with $\omega$ representing the angular (rotational) velocity of the rotor and $r$ is the radius of the blade element, and the velocity of the local incoming wind flow $\vec{V}_{in}$. Figure \ref{figvectors} depicts a cross-sectional airfoil element at radius $r$ in the plane perpendicular to the turbine axis.
+Static lift and drag coefficients of the 2D profile used for this study are
+taken from the technical technical report made by Sheldahl and Klimas
+\cite{sheldahl1981aerodynamic}, which is a popular database containing values
+for a wide range of Reynolds numbers. These coefficients are tabulated and
+combined with the blade element approach for determining body forces acting on
+blades. Relative flow velocity $\vec{V}_{\mathrm{rel}}$ and angle of attack
+$\alpha$ are calculated for each blade using the geometric relation between the
+velocity of the blade $- \omega r$, with $\omega$ representing the angular
+(rotational) velocity of the rotor and $r$ the radius of the blade element, and
+the velocity of the local incoming wind flow $\vec{V}_{\mathrm{in}}$. Figure
+\ref{figvectors} depicts a cross-sectional airfoil element at radius $r$ in the
+plane perpendicular to the turbine axis.
 
 \begin{figure}[h]
 %\begin{minipage}{36pc}
@@ -104,19 +120,26 @@ Once the angle of attack, relative velocity are obtained, the blade element lift
 \begin{align}
 & f_D = \frac{1}{2} \ \rho \ c \ C_D \left| V_{rel} \right|^2  \label{drag}
 \end{align} %\begin{align}
-where $C_L$ and $C_D$ are the lift and drag coefficients, respectively. Both are function of the Reynolds number and the angle of attack. It should be emphasized that the direction of the lift and drag are respectively perpendicular and parallel to the relative velocity $\vec{V}_{rel}$. $c$ represents the chord length.
+where $C_L$ and $C_D$ are the lift and drag coefficients, respectively. Both are
+function of the Reynolds number and the angle of attack. It should be emphasized
+that the direction of the lift and drag are respectively perpendicular and
+parallel to the relative velocity $\vec{V}_{\mathrm{rel}}$. $c$ represents the
+chord length.
 
-Same procedure is used to calculate forces from the turbine shaft and blade support struts. After all these forces on the actuator lines are calculated, then are added as a body force source, per unit of density (incompressible assumption), in the momentum Navier-Stokes equations (equation \ref{eqmom}).
+Same procedure is used to calculate forces from the turbine shaft and blade
+support struts. After all these forces on the actuator lines are calculated,
+then are added as a body force source, per unit of density (incompressible
+assumption), in the momentum Navier--Stokes equations (equation \ref{eqmom}).
 
-\subsection{Dynamic Stall Modeling (DSM)} The DSM is represented by the Leishman-Beddoes
-model\cite{leishman1986generalised} with the modifications of Sheng et
-al\cite{sheng2008modified} and Dyachuk\cite{dyachuk}.
-It is capable to calculate the unsteady lift,
-pitching moment and drag, giving a physical description of the aerodynamics. It
-have been validated with experimental data in\cite{leishman1989semi}.
-The model is separated into three subsystems: an attached flow model for unsteady linear
-airloads, a separated flow model for non-linear airloads and a dynamic stall
-model for the airloads induced by the leading edge vortex.
+\subsection{Dynamic Stall Modeling (DSM)} The DSM is represented by the
+Leishman-Beddoes model~\cite{leishman1986generalised} with the modifications of
+Sheng et al.~\cite{sheng2008modified} and Dyachuk~\cite{dyachuk}. It is capable to
+calculate the unsteady lift, pitching moment and drag, giving a physical
+description of the aerodynamics. It have been validated with experimental data
+in~\cite{leishman1989semi}. The model is separated into three subsystems: an
+attached flow model for unsteady linear airloads, a separated flow model for
+non-linear airloads and a dynamic stall model for the airloads induced by the
+leading edge vortex.
 
 The unsteady attached flow solution considers the circulatory and impulsive loads, which, at the same time depend on the unsteady bound vortex. The circulatory normal force coefficient could be expressed as
 \begin{align}
@@ -265,7 +288,14 @@ From Figure \ref{figmesh}, it could be noticed that there is a  variation in the
 
 \textbf{Temporal sensitivity:} Different time-steps were chosen for a varying temporal discretization test, which $\Delta t$ values are 0.001, 0.003, 0.0055 and 0.0075 [s], and these correspond to around 1200, 400, 220 and 160 time-steps per revolution respectively. In this study a coarse mesh with a refinement of 25\%, compared to the reference one, was used. Results are shown in Figure \ref{figdtcoarse}.
 
-The model is more sensitive to the spatial discretization than the temporal one; same characteristic was obtained by Bachant et al. in \cite{Bachant2016-VAT-ALM}. Accuracy and stability were not affected even for big values for $\Delta t$, as long they are within the limit given by the CFL condition; a Courant number of less than unity is required. On the other hand, it should be considered that small time-step of discretization could cause numerical instabilities due to the fluctuation of the flow fields resolving the transient term $\frac{\partial \alpha}{\partial t}$.
+The model is more sensitive to the spatial discretization than the temporal one;
+same characteristic was obtained by Bachant et al. in
+\cite{Bachant2016-VAT-ALM}. Accuracy and stability were not affected even for
+big values for $\Delta t$, as long they are within the limit given by the CFL
+condition; a Courant number of less than unity is required. On the other hand,
+it should be considered that small time-step of discretization could cause
+numerical instabilities due to the fluctuation of the flow fields resolving the
+transient term $\frac{\partial \alpha}{\partial t}$.
 
 \begin{figure}[h]
 \begin{minipage}{18pc}
@@ -280,18 +310,22 @@ The model is more sensitive to the spatial discretization than the temporal one;
 
 \subsection{TSR Variation}
 
-For a TSR of 4.19 (Figure \ref{fig138}), peaks values for both $C_N$ and $C_T$ are similar to experiments. In this condition, the flow is attached and the blades are not in the stall region. Therefore, model have good agreement with experimental data using unsteady attached angle of attack calculation.
+For a TSR of 4.19 (Figure \ref{fig138}), peaks values for both $C_N$ and $C_T$
+are similar to experiments. In this condition, the flow is attached and the
+blades are not in the stall region. Therefore, model have good agreement with
+experimental data using unsteady attached angle of attack calculation.
 
-For a TSR of 3.34 (Figure \ref{fig174}), the maximum magnitude of the angle of attack is at
-17.4\degree\ which is in the stall region. Both $C_N$ and $C_T$ curves show the delay
-of the flow reattachment, which is characteristic of the dynamic stall
-phenomenon. Peaks of simulated values have close agreement with the measured
-data. The stall onset angle flow reattachment are well predicted.
+For a TSR of 3.34 (Figure \ref{fig174}), the maximum magnitude of the angle of
+attack is at 17.4\degree\ which is in the stall region. Both $C_N$ and $C_T$
+curves show the delay of the flow reattachment, which is characteristic of the
+dynamic stall phenomenon. Peaks of simulated values have close agreement with
+the measured data. The stall onset angle flow reattachment are well predicted.
 
-For a TSR of 2.60 (Figure \ref{fig226}), the maximum amplitude of the angle of attack is 22.6\degree, which
-is related to a deeper stall region compared to a TSR of 3.34. This is shown
-because the ``loop'' of the curve is wider for the lower TSR, and moreover, the
-reattachment of the flow is further delayed. Simulated peak for $C_T$ is overestimated.
+For a TSR of 2.60 (Figure \ref{fig226}), the maximum amplitude of the angle of
+attack is 22.6\degree, which is related to a deeper stall region compared to a
+TSR of 3.34. This is shown because the ``loop'' of the curve is wider for the
+lower TSR, and moreover, the reattachment of the flow is further delayed.
+Simulated peak for $C_T$ is overestimated.
 
 \begin{figure}[h]
 \begin{minipage}{18pc}
@@ -356,13 +390,15 @@ A test for the simulation with the DSM turned off was carried out, it means ther
 \end{figure}
 
 
-
 \section{Conclusions}
-It have been demonstrated that the presented coupled model ALM with DSM, shows good agreement with experimental data, considering the complexity
-of the flows studied. Moreover, the model have been tested for a wide range of pithing amplitudes, therefore, with different stall conditions (not, small and deep stall), keeping a good results accuracy compared with experiments.
-The model is stable and accurate for the teste pithing blade motions.
-This makes the model suitable for application in VAWT
-simulations.
+
+It has been demonstrated that the presented coupled model ALM with DSM, shows
+good agreement with experimental data, considering the complexity of the flows
+studied. Moreover, the model has been tested for a wide range of pithing
+amplitudes, therefore, with different stall conditions (none, shallow, and deep
+stall), results agreed well compared with experiments. The model is stable and
+accurate for the tested pithing blade motions, which makes it suitable for
+application in VAT simulations.
 
 
 \section*{Acknowledgment}
