@@ -41,13 +41,14 @@ Pitching Motions Characteristic to Vertical Axis Turbines}
 \end{abstract}
 
 \section{Introduction}
-Operating conditions of Vertical Axis Wind Turbines VAWTs are characterized as complex unsteady flows which
-give a considerable challenge, both to describe using measurements and to
-represent through simulation tools\cite{huyer1996unsteady}. Moreover, VAWT
-blades are inherently exposed to cyclic variation in the angle of attack, which
-gives cyclic blade forces and can give material fatigue damage. Accurate
-modeling of the varying forces is therefore very important for the design of the
-VAWT.
+
+Operating conditions of Vertical Axis Wind Turbines VAWTs are characterized as
+complex unsteady flows which give a considerable challenge, both to describe
+using measurements and to represent through simulation
+tools~\cite{huyer1996unsteady}. Moreover, VAWT blades are inherently exposed to
+cyclic variation in the angle of attack, which gives cyclic blade forces and can
+give material fatigue damage. Accurate modeling of the varying forces is
+therefore very important for the design of the VAWT.
 
 The amplitude of the angle of attack oscillation in a fixed pitch VAWT is increasing
 with decreased tip speed
@@ -69,7 +70,7 @@ In this work, it was chosen to validate the model
 against wind tunnel data for a pitching blade. This will put the focus on the
 force modeling part in the simulation model.
 
-\subsection{Actuator Line Model (ALM)} 
+\subsection{Actuator Line Model (ALM)}
 The ALM is a three-dimensional and unsteady aerodynamic
 model developed by S{\o}rensen and Shen\cite{sorensen1999computation}, used to
 study the flow around wind turbines. It is a combination of a solver of
@@ -79,12 +80,12 @@ along lines. These forces are determined using a dynamic stall model commonly
 based on empirical data. This work uses the library turbinesFoam developed by
 Bachant\cite{bachant2015simulating}. This model is based on incompressible Navier-Stokes equation
 \begin{align}
- & \nonumber \\ & \dfrac{\partial \vec{V}}{\partial t} + \vec{V} \cdot \nabla \vec{V} = - \dfrac{1}{ \rho} \nabla p + \nu \nabla ^2 \vec{V} + \vec{f}	  \label{eqmom}  
+ & \nonumber \\ & \dfrac{\partial \vec{V}}{\partial t} + \vec{V} \cdot \nabla \vec{V} = - \dfrac{1}{ \rho} \nabla p + \nu \nabla ^2 \vec{V} + \vec{f}	  \label{eqmom}
 \end{align} %\begin{align}
 with $\vec{f}$ representing the body forces, which are the loads on the rotating blades for this case.
 
-Static lift and drag coefficients of the 2D profile used for this study are already known from the technical technical report made by Sheldahl and Klimas \cite{sheldahl1981aerodynamic}, which is a popular database set containing values for a wide range of Reynolds numbers. These coefficients are tabulated and combined with the blade element approach for determining 
-body forces acting on blades. Relative flow velocity $\vec{V}_{rel} $ and angle of attack $\alpha$ are calculated for each blade using the geometric relation between the velocity of the blade $- \Omega r$, with $\omega$ representing the angular (rotational) velocity of the rotor and $r$ is the radius of the blade element, and the velocity of the local incoming wind flow $\vec{V}_{in}$. Figure \ref{figvectors} depicts a cross-sectional airfoil element at radius $r$ in the plane perpendicular to the turbine axis.   
+Static lift and drag coefficients of the 2D profile used for this study are already known from the technical technical report made by Sheldahl and Klimas \cite{sheldahl1981aerodynamic}, which is a popular database set containing values for a wide range of Reynolds numbers. These coefficients are tabulated and combined with the blade element approach for determining
+body forces acting on blades. Relative flow velocity $\vec{V}_{rel} $ and angle of attack $\alpha$ are calculated for each blade using the geometric relation between the velocity of the blade $- \Omega r$, with $\omega$ representing the angular (rotational) velocity of the rotor and $r$ is the radius of the blade element, and the velocity of the local incoming wind flow $\vec{V}_{in}$. Figure \ref{figvectors} depicts a cross-sectional airfoil element at radius $r$ in the plane perpendicular to the turbine axis.
 
 \begin{figure}[h]
 %\begin{minipage}{36pc}
@@ -98,15 +99,15 @@ body forces acting on blades. Relative flow velocity $\vec{V}_{rel} $ and angle 
 
 Once the angle of attack, relative velocity are obtained, the blade element lift and drag forces per spanwise length unit are calculated as
 \begin{align}
-& f_L = \frac{1}{2} \ \rho \ c \ C_L \left| V_{rel} \right|^2  \label{lift}  
+& f_L = \frac{1}{2} \ \rho \ c \ C_L \left| V_{rel} \right|^2  \label{lift}
 \end{align} %\begin{align}
 \begin{align}
-& f_D = \frac{1}{2} \ \rho \ c \ C_D \left| V_{rel} \right|^2  \label{drag}  
+& f_D = \frac{1}{2} \ \rho \ c \ C_D \left| V_{rel} \right|^2  \label{drag}
 \end{align} %\begin{align}
 where $C_L$ and $C_D$ are the lift and drag coefficients, respectively. Both are function of the Reynolds number and the angle of attack. It should be emphasized that the direction of the lift and drag are respectively perpendicular and parallel to the relative velocity $\vec{V}_{rel}$. $c$ represents the chord length.
 
-Same procedure is used to calculate forces from the turbine shaft and blade support struts. After all these forces on the actuator lines are calculated, then are added as a body force source, per unit of density (incompressible assumption), in the momentum Navier-Stokes equations (equation \ref{eqmom}). 
- 
+Same procedure is used to calculate forces from the turbine shaft and blade support struts. After all these forces on the actuator lines are calculated, then are added as a body force source, per unit of density (incompressible assumption), in the momentum Navier-Stokes equations (equation \ref{eqmom}).
+
 \subsection{Dynamic Stall Modeling (DSM)} The DSM is represented by the Leishman-Beddoes
 model\cite{leishman1986generalised} with the modifications of Sheng et
 al\cite{sheng2008modified} and Dyachuk\cite{dyachuk}.
@@ -154,7 +155,7 @@ here, $\dot{\alpha}$ is the pitch rate, $r_0$ is the reduced pitching rate, whic
 \begin{align}
 | \alpha ' | > \alpha_{cr} \rightarrow \mathrm{stall} \label{stall}
 \end{align}
-for the separated flow, the effects are divided in two groups: trailing edge separation and leading vortex convection. The first one is related to the time delay in the movement of the boundary separation point, and is calculated using Kirchhoff's approximation  
+for the separated flow, the effects are divided in two groups: trailing edge separation and leading vortex convection. The first one is related to the time delay in the movement of the boundary separation point, and is calculated using Kirchhoff's approximation
 \begin{align}
 f'_n =
 \begin{cases}
@@ -198,7 +199,7 @@ Tangential force coefficient is calculated trough Kichhoff's flow relation using
 \begin{align}
 C_T = \eta C_{N_\alpha} \alpha_E ^2 ( \sqrt{f''}-E_0)     \label{CT}
 \end{align}
-with the empirical constants $\eta = 0.975$ and $E_0 = 0.15$ corresponding to NACA0021 airfoil profile.  
+with the empirical constants $\eta = 0.975$ and $E_0 = 0.15$ corresponding to NACA0021 airfoil profile.
 
 
 
@@ -224,7 +225,7 @@ University\cite{angell1988collected}.
 
 
 \section{Results and discussion}
-In this section, obtained results for $C_N$ and $C_T$ from simulations are compared with the experimental data. Varying parameters have been tested, mainly in the deep stall condition for an amplitude of 22.6 $\degree $ (equivalent to $\lambda$ = 2.6). All the studied cases were simulated using a LES Smagorinsky turbulence model. Figure \ref{revolutions} shows that the model needs two revolutions to reach the convergence, a third revolution will not produce any change. 
+In this section, obtained results for $C_N$ and $C_T$ from simulations are compared with the experimental data. Varying parameters have been tested, mainly in the deep stall condition for an amplitude of 22.6 $\degree $ (equivalent to $\lambda$ = 2.6). All the studied cases were simulated using a LES Smagorinsky turbulence model. Figure \ref{revolutions} shows that the model needs two revolutions to reach the convergence, a third revolution will not produce any change.
 
 \begin{figure}[h]
 \begin{minipage}{18pc}
@@ -233,12 +234,12 @@ In this section, obtained results for $C_N$ and $C_T$ from simulations are compa
 \end{minipage}\hspace{2pc}%
 \begin{minipage}{18pc}
 \resizebox{\columnwidth}{!}{\input{./figures/CT226revolutions}}
-\end{minipage} 
+\end{minipage}
 \caption{\label{revolutions}Normal (left) and tangential (right) force coefficients varying the number of revolutions for a pitching motion of NACA0021 airfoil with a maximum amplitude of 22.6$\degree$.}
 \end{figure}
 
-\textbf{Spatial sensitivity:} A test of the response of the model 
-to the variation in the size of the mesh is carried out. A mesh of approximatively 1e5 of cells with a local refinement around the blade is used as a reference mesh (Figure \ref{figrefmesh}), this topology is kept constant and globally refinement are applied for this study; it means the mesh is proportionally scaled in every coordinates. 
+\textbf{Spatial sensitivity:} A test of the response of the model
+to the variation in the size of the mesh is carried out. A mesh of approximatively 1e5 of cells with a local refinement around the blade is used as a reference mesh (Figure \ref{figrefmesh}), this topology is kept constant and globally refinement are applied for this study; it means the mesh is proportionally scaled in every coordinates.
 
 \begin{figure}[h]
 \begin{minipage}{36pc}
@@ -249,7 +250,7 @@ to the variation in the size of the mesh is carried out. A mesh of approximative
 \caption{\label{figrefmesh} Illustration of a reference mesh section and vorticity isosurfaces generated by the pitching motion around the blade.}
 \end{figure}
 
-From Figure \ref{figmesh}, it could be noticed that there is a  variation in the results either for a decreasing or increasing in the mesh resolution. Between the refinement of 150 and 200\% not considerable changes are obtained in the results, so a major refinement is not justified due this will not give any possible improvement in the accuracy of the results. 
+From Figure \ref{figmesh}, it could be noticed that there is a  variation in the results either for a decreasing or increasing in the mesh resolution. Between the refinement of 150 and 200\% not considerable changes are obtained in the results, so a major refinement is not justified due this will not give any possible improvement in the accuracy of the results.
 
 \begin{figure}[h]
 \begin{minipage}{18pc}
@@ -258,11 +259,11 @@ From Figure \ref{figmesh}, it could be noticed that there is a  variation in the
 \end{minipage}\hspace{2pc}%
 \begin{minipage}{18pc}
 \resizebox{\columnwidth}{!}{\input{./figures/CTmesh}}
-\end{minipage} 
+\end{minipage}
 \caption{\label{figmesh}Normal (left) and tangential (right) force coefficients varying the size of the reference mesh for a pitching motion with a maximum amplitude of 22.6\degree\ }
 \end{figure}
 
-\textbf{Temporal sensitivity:} Different time-steps were chosen for a varying temporal discretization test, which $\Delta t$ values are 0.001, 0.003, 0.0055 and 0.0075 [s], and these correspond to around 1200, 400, 220 and 160 time-steps per revolution respectively. In this study a coarse mesh with a refinement of 25\%, compared to the reference one, was used. Results are shown in Figure \ref{figdtcoarse}. 
+\textbf{Temporal sensitivity:} Different time-steps were chosen for a varying temporal discretization test, which $\Delta t$ values are 0.001, 0.003, 0.0055 and 0.0075 [s], and these correspond to around 1200, 400, 220 and 160 time-steps per revolution respectively. In this study a coarse mesh with a refinement of 25\%, compared to the reference one, was used. Results are shown in Figure \ref{figdtcoarse}.
 
 The model is more sensitive to the spatial discretization than the temporal one; same characteristic was obtained by Bachant et al. in \cite{Bachant2016-VAT-ALM}. Accuracy and stability were not affected even for big values for $\Delta t$, as long they are within the limit given by the CFL condition; a Courant number of less than unity is required. On the other hand, it should be considered that small time-step of discretization could cause numerical instabilities due to the fluctuation of the flow fields resolving the transient term $\frac{\partial \alpha}{\partial t}$.
 
@@ -273,7 +274,7 @@ The model is more sensitive to the spatial discretization than the temporal one;
 \end{minipage}\hspace{2pc}%
 \begin{minipage}{18pc}
 \resizebox{\columnwidth}{!}{\input{./figures/CT226dtLEScoarse}}
-\end{minipage} 
+\end{minipage}
 \caption{\label{figdtcoarse}Normal (left) and tangential (right) force coefficients varying time-step discretization for a pithing motion with a maximum amplitude of 22.6\degree\ }
 \end{figure}
 
@@ -290,7 +291,7 @@ data. The stall onset angle flow reattachment are well predicted.
 For a TSR of 2.60 (Figure \ref{fig226}), the maximum amplitude of the angle of attack is 22.6\degree, which
 is related to a deeper stall region compared to a TSR of 3.34. This is shown
 because the ``loop'' of the curve is wider for the lower TSR, and moreover, the
-reattachment of the flow is further delayed. Simulated peak for $C_T$ is overestimated. 
+reattachment of the flow is further delayed. Simulated peak for $C_T$ is overestimated.
 
 \begin{figure}[h]
 \begin{minipage}{18pc}
@@ -299,7 +300,7 @@ reattachment of the flow is further delayed. Simulated peak for $C_T$ is overest
 \end{minipage}\hspace{2pc}%
 \begin{minipage}{18pc}
 \resizebox{\columnwidth}{!}{\input{./figures/CT138}}
-\end{minipage} 
+\end{minipage}
 \caption{\label{fig138}Normal (left) and tangential (right) force coefficients during pitching motions of NACA0021 airfoil with a maximum amplitude of 13.8\degree\ (analog to $\lambda = 4.19$).}
 \end{figure}
 
@@ -311,7 +312,7 @@ reattachment of the flow is further delayed. Simulated peak for $C_T$ is overest
 \end{minipage}\hspace{2pc}%
 \begin{minipage}{18pc}
 \resizebox{\columnwidth}{!}{\input{./figures/CT174}}
-\end{minipage} 
+\end{minipage}
 \caption{\label{fig174}Normal (left) and tangential (right) force coefficients during pitching motions of NACA0021 airfoil with a maximum amplitude of 17.4\degree\ (analog to $\lambda = 3.34$).}
 \end{figure}
 
@@ -322,12 +323,12 @@ reattachment of the flow is further delayed. Simulated peak for $C_T$ is overest
 \end{minipage}\hspace{2pc}%
 \begin{minipage}{18pc}
 \resizebox{\columnwidth}{!}{\input{./figures/CT226}}
-\end{minipage} 
+\end{minipage}
 \caption{\label{fig226}Normal (left) and tangential (right) force coefficients during pitching motions of NACA0021 airfoil with a maximum amplitude of 22.6\degree\ (analog to $\lambda = 2.60$).}
 \end{figure}
 
 \subsection{Turbulence model comparison}
-A simulation with a RANS $k$-$\epsilon$ standard turbulence model was carried out to compare the obtained results against another one using a LES Smagorinsky turbulence model. Figure \ref{RANSLES} shows that for the $C_N$ values there is not considerable difference, but a small improvement has been achieved for the $C_T$ values. 
+A simulation with a RANS $k$-$\epsilon$ standard turbulence model was carried out to compare the obtained results against another one using a LES Smagorinsky turbulence model. Figure \ref{RANSLES} shows that for the $C_N$ values there is not considerable difference, but a small improvement has been achieved for the $C_T$ values.
 
 \begin{figure}[h]
 \begin{minipage}{18pc}
@@ -336,12 +337,12 @@ A simulation with a RANS $k$-$\epsilon$ standard turbulence model was carried ou
 \end{minipage}\hspace{2pc}%
 \begin{minipage}{18pc}
 \resizebox{\columnwidth}{!}{\input{./figures/CTRANSLES}}
-\end{minipage} 
+\end{minipage}
 \caption{\label{RANSLES}Normal (left) and tangential (right) force coefficients for different turbulence models, pithing motion with a maximum amplitude of 22.6\degree\ }
 \end{figure}
 
 \subsection{Unsteady effects correction}
-A test for the simulation with the DSM turned off was carried out, it means there is no compensation for the unsteady effects: the effective angle of attack is the angle of attack provided by the ALM. Figure \ref{AMP174corrections} depicts that simulated results are closer to experimental data with the corrections. Both $C_N$ and $C_T$ peak values are not overestimated. The $C_N$ loop, shows that the model without the corrections was not able to capture reattachment flow effects. 
+A test for the simulation with the DSM turned off was carried out, it means there is no compensation for the unsteady effects: the effective angle of attack is the angle of attack provided by the ALM. Figure \ref{AMP174corrections} depicts that simulated results are closer to experimental data with the corrections. Both $C_N$ and $C_T$ peak values are not overestimated. The $C_N$ loop, shows that the model without the corrections was not able to capture reattachment flow effects.
 
 \begin{figure}[h]
 \begin{minipage}{18pc}
@@ -350,7 +351,7 @@ A test for the simulation with the DSM turned off was carried out, it means ther
 \end{minipage}\hspace{2pc}%
 \begin{minipage}{18pc}
 \resizebox{\columnwidth}{!}{\input{./figures/CTAMP174corrections}}
-\end{minipage} 
+\end{minipage}
 \caption{\label{AMP174corrections}Normal (left) and tangential (right) force coefficients with and without unsteady effects correction, pithing motion with a maximum amplitude of 17.4\degree\ }
 \end{figure}
 
@@ -358,14 +359,14 @@ A test for the simulation with the DSM turned off was carried out, it means ther
 
 \section{Conclusions}
 It have been demonstrated that the presented coupled model ALM with DSM, shows good agreement with experimental data, considering the complexity
-of the flows studied. Moreover, the model have been tested for a wide range of pithing amplitudes, therefore, with different stall conditions (not, small and deep stall), keeping a good results accuracy compared with experiments. 
+of the flows studied. Moreover, the model have been tested for a wide range of pithing amplitudes, therefore, with different stall conditions (not, small and deep stall), keeping a good results accuracy compared with experiments.
 The model is stable and accurate for the teste pithing blade motions.
 This makes the model suitable for application in VAWT
 simulations.
 
 
 \section*{Acknowledgment}
-Financial support from STandUP for Energy and Uppsala University, are gratefully acknowledged. 
+Financial support from STandUP for Energy and Uppsala University, are gratefully acknowledged.
 
 
 \section*{References}
@@ -375,4 +376,3 @@ Financial support from STandUP for Energy and Uppsala University, are gratefully
 
 
 \end{document}
-
