@@ -21,28 +21,28 @@ Pitching Motions Characteristic to Vertical Axis Turbines}
 \ead{victor.mendoza@angstrom.uu.se}
 
 \begin{abstract}
-    Vertical axis turbines (VATs) can be used to extract renewable energy from
-    wind or water flows. A simpler design, low cost of maintenance, and the
+    Vertical axis wind turbines (VAWT) can be used to extract renewable energy from
+    wind flows. A simpler design, low cost of maintenance, and the
     ability to accept flow from all directions perpendicular to the rotor axis
-    are some of the most important advantages over conventional horizontal axis
-    turbines (HATs). However, VATs encounter complex and unsteady fluid
+    are some of the most important advantages over conventional horizontal axis wind
+    turbines (HAWT). However, VAWT encounter complex and unsteady fluid
     dynamics, which present significant modeling challenges. One of the most
     relevant phenomena is dynamic stall, which is caused by the unsteady
     variation of angle of attack throughout the blade rotation, and is the focus
     of the present study. Dynamic stall is usually used as a passive control for
-    VAT operating conditions, hence the importance of predicting its effects. In
+    VAWT operating conditions, hence the importance of predicting its effects. In
     this study, a coupled model is implemented with the open-source CFD
     toolbox OpenFOAM for solving the Navier--Stokes equations, where an actuator
     line model and dynamic stall model are used to compute the blade loading and
     body force. Force coefficients obtained from the model are validated with
     experimental data of pitching airfoil in similar operating conditions as an
-    H-rotor type VAT. Numerical results show reasonable agreement with
+    H-rotor type VAWT. Numerical results show reasonable agreement with
     experimental data for pitching motion.
 \end{abstract}
 
 \section{Introduction}
 
-Operating conditions of Vertical Axis Wind Turbines VAWTs are characterized as
+Operating conditions of Vertical Axis Wind Turbines (VAWT) are characterized as
 complex unsteady flows which give a considerable challenge, both to describe
 using measurements and to represent through simulation
 tools~\cite{huyer1996unsteady}. Moreover, VAWT blades are inherently exposed to
@@ -130,6 +130,21 @@ Same procedure is used to calculate forces from the turbine shaft and blade
 support struts. After all these forces on the actuator lines are calculated,
 then are added as a body force source, per unit of density (incompressible
 assumption), in the momentum Navier--Stokes equations (equation \ref{eqmom}).
+
+\section*{Calculated force distribution}
+The applied forces in the ALM need to be distributed smoothly on several mesh points in order to avoid instability due to high gradients. Source term forces should be projected around the element location using a three-dimensional Gaussian kernel. This gives the smoothing function $\eta$, which is multiplied by the computed local force on the actuator line element and then imparted on a cell with a distance $| \vec r |$ from the actuator line element quarter chord location:
+
+\begin{align*}
+\eta = \frac{1}{\epsilon ^3 \pi ^{3/2} } \exp \left[ - \left( \frac{| \vec r |}{\epsilon} \right) ^2 \right]
+\end{align*}
+
+The smoothing width parameter $\epsilon$ is chosen by the maximum value from three contributions: one relative to the 25\% of the chord length, one to the mesh size, and one to the momentum thickness due to drag force, and it is expressed as:
+
+\begin{align*}
+\epsilon = \max \left[ \frac{c}{4},4 \sqrt[\leftroot{-2}\uproot{2}3]{V_{\mathrm{cell}}},  \frac{c C_d}{2}\right]
+\end{align*}
+
+Where ${V_{\mathrm{cell}}}$ is the cell volume. More details about force projection are in \cite{Bachant2016-VAT-ALM}.
 
 
 \subsection{Dynamic Stall Modeling}
@@ -379,7 +394,9 @@ A simulation with a RANS $k$-$\epsilon$ standard turbulence model was carried ou
 \end{figure}
 
 \subsection{Unsteady effects correction}
-A test for the simulation with the DSM turned off was carried out, it means there is no compensation for the unsteady effects: the effective angle of attack is the angle of attack provided by the ALM. Figure \ref{AMP174corrections} depicts that simulated results are closer to experimental data with the corrections. Both $C_N$ and $C_T$ peak values are not overestimated. The $C_N$ loop, shows that the model without the corrections was not able to capture reattachment flow effects.
+
+
+According to \cite{dyachuk2015simulating}, where the dynamic stall model is combined with a vortex model, it is beneficial to omit the attached flow correction equation \ref{alphaeq} and instead use $\alpha_E$ = $\alpha_n$. Hence, it is of interest to investigate if this correction should be included or not when the ALM is used instead of the vortex model. Figure \ref{AMP174corrections} depicts that simulated results with the attached flow corrections have small improvements in the accuracy and are closer to experimental data. Results without corrections also have good agreement. Both $C_N$ and $C_T$ peak values are not overestimated.  This same study was carried out for a bigger angle of attack range and differences are less significant.        This has also been tested for larger angles of attack and the differences between using equation \ref{alphaeq} or not are less significant here as the separated flow modeling dominates the force calculation.  
 
 \begin{figure}[h]
 \begin{minipage}{18pc}
@@ -401,7 +418,7 @@ studied. Moreover, the model has been tested for a wide range of pithing
 amplitudes, therefore, with different stall conditions (none, shallow, and deep
 stall), results agreed well compared with experiments. The model is stable and
 accurate for the tested pithing blade motions, which makes it suitable for
-application in VAT simulations.
+application in VAWT simulations.
 
 
 \section*{Acknowledgment}
