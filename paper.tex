@@ -6,7 +6,7 @@
 \usepackage{epstopdf}
 \usepackage{amsmath}
 \usepackage{amssymb} 	%for symbols
-
+\usepackage[colorlinks,bookmarksopen,bookmarksnumbered,allcolors=blue]{hyperref}
 
 \graphicspath{{./figures/}}
 
@@ -82,7 +82,7 @@ with a so-called actuator line technique, in which blades of the turbine are
 represented by a distribution of body forces along lines. These forces
 are determined using a dynamic stall model commonly based on empirical data.
 This work uses the library turbinesFoam developed by Bachant et
-al.~\cite{bachant2015simulating,Bachant2016-VAT-ALM}.
+al.~\cite{bachant2015simulating,Bachant2016-VAT-ALM,turbinesFoam-v0.0.7}.
 
 The model employed here is based on the incompressible Navier--Stokes equation
 \begin{align}
