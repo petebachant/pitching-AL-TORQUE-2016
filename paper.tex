@@ -91,22 +91,22 @@ The model employed here is based on the incompressible Navier--Stokes equation
 with $\vec{f}$ representing the body forces, which are the loads on the rotating blades for this case.
 
 Static lift and drag coefficients of the 2D profile used for this study are
-taken from the technical technical report made by Sheldahl and Klimas
+taken from the technical report made by Sheldahl and Klimas
 \cite{sheldahl1981aerodynamic}, which is a popular database containing values
 for a wide range of Reynolds numbers. These coefficients are tabulated and
 combined with the blade element approach for determining body forces acting on
 blades. Relative flow velocity $\vec{V}_{\mathrm{rel}}$ and angle of attack
 $\alpha$ are calculated for each blade using the geometric relation between the
-velocity of the blade $- \omega r$, with $\omega$ representing the angular
+velocity of the blade $- \Omega r$, with $\Omega$ representing the angular
 (rotational) velocity of the rotor and $r$ the radius of the blade element, and
-the velocity of the local incoming wind flow $\vec{V}_{\mathrm{in}}$. Figure
+the velocity of the local incident wind flow $\vec{V}_{\mathrm{in}}$ which is generally lower than the incoming flow velocity $\vec{V}_{\infty}$. Figure
 \ref{figvectors} depicts a cross-sectional airfoil element at radius $r$ in the
 plane perpendicular to the turbine axis.
 
 \begin{figure}[h]
 %\begin{minipage}{36pc}
 \begin{center}
-\includegraphics[width=0.35\columnwidth]{vector.eps}
+\includegraphics[width=0.33\columnwidth]{vector2.eps}
 \end{center}
 %\resizebox{\columnwidth}{!}{\input{plot}}
 %\end{minipage}%
@@ -141,7 +141,7 @@ The applied forces in the ALM need to be distributed smoothly on several mesh po
 The smoothing width parameter $\epsilon$ is chosen by the maximum value from three contributions: one relative to the 25\% of the chord length, one to the mesh size, and one to the momentum thickness due to drag force, and it is expressed as:
 
 \begin{align*}
-\epsilon = \max \left[ \frac{c}{4},4 \sqrt[\leftroot{-2}\uproot{2}3]{V_{\mathrm{cell}}},  \frac{c C_d}{2}\right]
+\epsilon = \max \left[ \frac{c}{4},4 \sqrt[\leftroot{-2}\uproot{2}3]{V_{\mathrm{cell}}},  \frac{c C_D}{2}\right]
 \end{align*}
 
 Where ${V_{\mathrm{cell}}}$ is the cell volume. More details about force projection are in \cite{Bachant2016-VAT-ALM}.
@@ -167,7 +167,7 @@ where $C_{N \alpha}$ indicates the slope of the static normal force coefficient 
 \begin{align}
 & \alpha_{E_n} = \alpha_n - X_n -Y_n - Z_n	\label{alphaeq}
 \end{align}
-where $\alpha$ is the geometrical angle of attackm $X$, $Y$ and $Z$ are the deficiency functions, which are empirically derived, based on the flow velocity and the pithing rate, the details are found in \cite{dyachuk2013dynamic}. Indices $n$ and $n-1$ in equations \ref{CNcirc} and \ref{alphaeq} represent the current and previous time-step. A delayed angle of attack is considered due to the lag in pressure response, and it is calculated as
+where $\alpha$ is the geometrical angle of attack and $X$, $Y$ and $Z$ are the deficiency functions, which are empirically derived, based on the flow velocity and the pithing rate, the details are found in \cite{dyachuk2013dynamic}. Indices $n$ and $n-1$ represent the current and previous time-step. A delayed angle of attack is considered due to the lag in pressure response, and it is calculated as
 \begin{align}
 & {\alpha _n}' = {\alpha _n} - D_{\alpha _n}    	\label{alphadel}
 \end{align}
@@ -214,11 +214,11 @@ and $D_{f_n}$ is the deficiency function defined as
 \end{align}
 Here, $T_f$ is empirically derived time constant and its value is $T_f$ = 3. Then, the normal force coefficient for unsteady conditions before the dynamic stall onset is calculated as
 \begin{align}
-& C_{N_n}^f = C_{N_\alpha} \alpha_{E_n} \left( \frac{1 + \sqrt{f''}}{2} \right)^2	\label{CNf}
+& C_{N_n}^f = C_{N_\alpha} \alpha_{E_n} \left( \frac{1 + \sqrt{f''_n}}{2} \right)^2	\label{CNf}
 \end{align}
 after the stall condition is met, the leading edge vortex convects over the surface of the airfoil towards the trailing edge. A significant increase in the normal forces occurs during this process
 \begin{align}
-C_N^v = B_1 (f'' - f) V_x \label{CNv}
+C_N^v = B_1 (f''_n - f_n) V_x \label{CNv}
 \end{align}
 where $C_N^v$ represents the normal force coefficient during the vortex convection, which is in function of the pitch rate. $V_x$ and $B_1$ are parameters based on the local Reynolds number and the airfoil profile, they are found in \cite{dyachuk2013dynamic}. Once the vortex passes the trailing edge, the normal force decreases quickly. Total normal force obtained is expressed as
 \begin{align}
@@ -233,12 +233,12 @@ Figure \ref{figpitching} shows an example of the normal coefficient forces on a 
 \end{center}
 %\resizebox{\columnwidth}{!}{\input{plot}}
 %\end{minipage}%
-\caption{\label{figpitching} Illustration of dynamic stall: NACA0021 profile with $\alpha=6 + 16 \sin (\omega	t), \ \omega=12,47$ [rad/s], $V_\infty=34,3$ [m/s] and $c$ = 0,55[m]}
+\caption{\label{figpitching} Illustration of dynamic stall: NACA0021 profile with $\alpha=6 + 16 \sin (\Omega	t), \ \Omega=12,47$[rad/s], $V_\infty=34,3$[m/s] and $c$ = 0,55[m]}
 \end{figure}
 
 Tangential force coefficient is calculated trough Kichhoff's flow relation using the dynamic separation point.
 \begin{align}
-C_T = \eta C_{N_\alpha} \alpha_E ^2 ( \sqrt{f''}-E_0)     \label{CT}
+C_T = \eta C_{N_\alpha} \alpha_E ^2 ( \sqrt{f''_n}-E_0)     \label{CT}
 \end{align}
 with the empirical constants $\eta = 0.975$ and $E_0 = 0.15$ corresponding to NACA0021 airfoil profile.
 
@@ -260,13 +260,13 @@ where $\theta$ is the azimuthal blade angle and $ \lambda $ represents the TSR,
 \begin{eqnarray}
     \lambda =  \frac{\Omega R}{ |\vec{V}_\infty | } \label{tsrval}
 \end{eqnarray}
-In the equation \ref{alphaval}, $\alpha$ represents the geometric angle of attack, and it is different to the effective angle of attack $\alpha_E$, which is calculated by the model in order to get the force coefficients. A NACA0021 profile with 0.55 [m] of chord length is driven to the dynamic stall region trough the pitching motion accordint to equation \ref{alphaval}. The pitching blade experiments were carried out at Glasgow
+In the equation \ref{alphaval}, $\alpha$ represents the geometric angle of attack, and it is different to the effective angle of attack $\alpha_E$, which is calculated by the model in order to get the force coefficients. A NACA0021 profile with 0.55[m] of chord length is driven to the dynamic stall region trough the pitching motion accordint to equation \ref{alphaval}. The pitching blade experiments were carried out at Glasgow
 University\cite{angell1988collected}.
 
 
 
 \section{Results and discussion}
-In this section, obtained results for $C_N$ and $C_T$ from simulations are compared with the experimental data. Varying parameters have been tested, mainly in the deep stall condition for an amplitude of 22.6 $\degree $ (equivalent to $\lambda$ = 2.6). All the studied cases were simulated using a LES Smagorinsky turbulence model. Figure \ref{revolutions} shows that the model needs two revolutions to reach the convergence, a third revolution will not produce any change.
+In this section, obtained results for $C_N$ and $C_T$ from simulations are compared with the experimental data. Varying parameters have been tested, mainly in the deep stall condition for an amplitude of 22.6 $\degree $ (equivalent to $\lambda$ = 2.6). All the studied cases were simulated with a domain geometrically similar to the wind tunnel used in \cite{angell1988collected} to emulate the pitching blade experiments: 1.61[m] of span, 2.13[m] of height, 2.5[m] upstream and 4[m] downstream, with similar velocity boundary conditions: 28.4[m/s] in the inlet and no-slip condition (fixed 0[m/s]) in the walls, using a LES Smagorinsky turbulence model. Figure \ref{revolutions} shows that the model needs two revolutions to reach the convergence, a third revolution will not produce any change.
 
 \begin{figure}[h]
 \begin{minipage}{18pc}
@@ -304,7 +304,7 @@ From Figure \ref{figmesh}, it could be noticed that there is a  variation in the
 \caption{\label{figmesh}Normal (left) and tangential (right) force coefficients varying the size of the reference mesh for a pitching motion with a maximum amplitude of 22.6\degree\ }
 \end{figure}
 
-\textbf{Temporal sensitivity:} Different time-steps were chosen for a varying temporal discretization test, which $\Delta t$ values are 0.001, 0.003, 0.0055 and 0.0075 [s], and these correspond to around 1200, 400, 220 and 160 time-steps per revolution respectively. In this study a coarse mesh with a refinement of 25\%, compared to the reference one, was used. Results are shown in Figure \ref{figdtcoarse}.
+\textbf{Temporal sensitivity:} Different time-steps were chosen for a varying temporal discretization test, which $\Delta t$ values are 0.001, 0.003, 0.0055 and 0.0075[s], and these correspond to around 1200, 400, 220 and 160 time-steps per revolution respectively. In this study a coarse mesh with a refinement of 25\%, compared to the reference one, was used. Results are shown in Figure \ref{figdtcoarse}.
 
 The model is more sensitive to the spatial discretization than the temporal one;
 same characteristic was obtained by Bachant et al. in
